@@ -96,7 +96,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
 
       <div class="col-sm-5 benefits">
         <div class="hidden-xs">&nbsp;</div>
-        <h4>Bring the best of JavaScript data visualization to R</h4>
+        <h4>A List of gglot2 extensions</h4>
         <ul>
           <li>Use JavaScript visualization libraries <strong>at the R console</strong>, just like plots</li>
           <li>Embed widgets in <strong>R Markdown</strong> documents and <strong>Shiny</strong> web applications</li>
@@ -110,23 +110,17 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
           <ol class="carousel-indicators hide">
             <li data-target="#widget-carousel" data-slide-to="0" class="active"></li>
             <li data-target="#widget-carousel" data-slide-to="1"></li>
-            <li data-target="#widget-carousel" data-slide-to="2"></li>
           </ol>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <div class="item active" data-slide="0">
-              <img class="main-screenshot" src="images/rconsole.2x.png">
+              <img class="main-screenshot" src="images/carousel-ggiraph.png">
               <div class="carousel-caption">
               </div>
             </div>
             <div class="item" data-slide="1">
-              <img src="images/rmarkdown.2x.png">
-              <div class="carousel-caption">
-              </div>
-            </div>
-            <div class="item" data-slide="2">
-              <img src="images/shiny.2x.jpg">
+              <img src="images/carousel-ggstance.png">
               <div class="carousel-caption">
               </div>
             </div>
@@ -146,10 +140,8 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
         </div>
 
         <ul class="pagination pagination-sm">
-          <li class="active"><a href="javascript:void" data-target="#widget-carousel" data-slide-to="0"><span class="bullet">&#x25bc;</span>At the R console</a></li>
-          <li><a href="javascript:void" data-target="#widget-carousel" data-slide-to="1"><span class="bullet">&#x25bc;</span>In R Markdown docs</a></li>
-          <li><a href="javascript:void" data-target="#widget-carousel" data-slide-to="2"><span class="bullet">&#x25bc;</span>In Shiny apps</a></li>
-        </ul>
+          <li class="active"><a href="javascript:void" data-target="#widget-carousel" data-slide-to="0"><span class="bullet">&#x25bc;</span>ggiraph</a></li>
+          <li><a href="javascript:void" data-target="#widget-carousel" data-slide-to="1"><span class="bullet">&#x25bc;</span>ggstance</a></li>
 
       </div>
 
@@ -164,16 +156,10 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
     <div class="col-sm-9">
       <div class="row showcase-teaser">
         <div class="col-xs-6 col-sm-3">
-          <a href="showcase_leaflet.html"><img src="images/carousel-leaflet.png"/></a>
+          <a href="ggiraph.html"><img src="images/carousel-ggiraph.png"/></a>
         </div>
         <div class="col-xs-6 col-sm-3">
-          <a href="showcase_dygraphs.html"><img src="images/carousel-dygraphs.png"/></a>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <a href="showcase_networkD3.html"><img src="images/carousel-networkD3.png"/></a>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <a href="showcase_threejs.html"><img src="images/carousel-threejs.png"/></a>
+          <a href="ggstance.html"><img src="images/carousel-ggstance.png"/></a>
         </div>
       </div>
     </div>
