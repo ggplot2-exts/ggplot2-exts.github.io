@@ -1,0 +1,42 @@
+.header {
+  margin-top: 18px;
+}
+
+.header h3 {
+  padding-top: 10px;
+  margin-top: 0;
+}
+
+.header nav.navbar {
+  margin-bottom: 12px;
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none
+}
+
+#showcase-intro {
+  margin-bottom: 30px;
+}
+
+#showcase-body h3 {
+  margin-top: 0px;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  margin-bottom: 100px;
+}
+
+input[type="search"]  { 
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: solid 1px LightGray;
+}
+
+.html-widget-static-bound {
+  width: 100% !important;
+}

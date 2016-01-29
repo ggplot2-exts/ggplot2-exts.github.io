@@ -1,0 +1,22 @@
+---
+title: "ggplot2 extensions: ggstance"
+---
+
+### ggstance
+<https://github.com/lionel-/ggstance>
+
+ggstance implements horizontal versions of common ggplot2 geoms.
+
+```{r message=FALSE,warning=FALSE}
+library("ggplot2")
+library("ggstance")
+
+# Vertical
+ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
+  geom_boxplot()
+
+# Horizontal with coord_flip()
+ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
+  geom_boxplot() +
+  coord_flip()
+```
