@@ -159,7 +159,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
 </div> <!-- jumbotron -->
 
 <div class="container-fluid main-container below-lead">
-  <h3>Extensions in action</h3>
+  <h3>See the Extensions</h3>
   <div class="row">
     <div class="col-sm-9">
       <div class="row showcase-teaser">
@@ -180,10 +180,10 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
   </div>
   <div class="row">
     <div class="col-sm-9">
-      <p>Head over to the "Showcase" page to see a list of ggplot2 extensions.</p>
+      <p>Head over to the <a href="ggiraph.html">Extensions</a> page to see a list of ggplot2 extensions.</p>
     </div>
     <div class="col-sm-3">
-      <p><a class="btn btn-info" href="showcase_leaflet.html" role="button">See the showcase &raquo;</a></p>
+      <p><a class="btn btn-info" href="ggiraph.html" role="button">See the Extensions &raquo;</a></p>
     </div>
   </div>
   <hr/>
@@ -193,7 +193,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
       <p>Submit your ggplot extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
     </div>
     <div class="col-sm-3">
-      <p><a class="btn btn-success" href="develop_intro.html" target="_blank" role="button">Submit your extension &raquo;</a></p>
+      <p><a class="btn btn-success" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io" target="_blank" role="button">Submit your Extension &raquo;</a></p>
     </div>
   </div>
 </div>
