@@ -180,7 +180,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
   </div>
   <div class="row">
     <div class="col-sm-9">
-      <p>Head over to the <a href="ggiraph.html">Extensions</a> page to see a list of ggplot2 extensions.</p>
+      <p>Go to the <a href="ggiraph.html">Extensions</a> page to see a list of ggplot2 extensions.</p>
     </div>
     <div class="col-sm-3">
       <p><a class="btn btn-info" href="ggiraph.html" role="button">See the Extensions &raquo;</a></p>
@@ -190,7 +190,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
   <h3>Submit your extension</h3>
   <div class="row">
     <div class="col-sm-9">
-      <p>Submit your ggplot extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
+      <p>Submit your ggplot2 extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
     </div>
     <div class="col-sm-3">
       <p><a class="btn btn-success" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io" target="_blank" role="button">Submit your Extension &raquo;</a></p>
