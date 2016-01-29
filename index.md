@@ -168,7 +168,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
       <p>Go to the <a href="ggiraph.html">Extensions</a> page to see a list of ggplot2 extensions.</p>
     </div>
     <div class="col-sm-3">
-      <p><a class="btn btn-info" href="ggiraph.html" role="button">See the Extensions &raquo;</a></p>
+      <p><a class="btn btn-success" href="ggiraph.html" role="button">See the Extensions &raquo;</a></p>
     </div>
   </div>
   <hr/>
