@@ -98,9 +98,8 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
         <div class="hidden-xs">&nbsp;</div>
         <h4>A List of gglot2 extensions</h4>
         <ul>
-          <li>Use JavaScript visualization libraries <strong>at the R console</strong>, just like plots</li>
-          <li>Embed widgets in <strong>R Markdown</strong> documents and <strong>Shiny</strong> web applications</li>
-          <li><strong>Develop new widgets</strong> using a framework that seamlessly bridges R and JavaScript</li>
+          <li>This site tracks and lists <strong>gglot2</strong> extenstions developed by R users in the community.</li>
+          <li>This site makes it easy for R users to find developed extensions.</li>
         </ul>
       </div>
 
