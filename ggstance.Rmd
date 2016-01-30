@@ -8,6 +8,7 @@ title: "ggplot2 extensions: ggstance"
 ggstance implements horizontal versions of common ggplot2 geoms.
 
 ```{r message=FALSE,warning=FALSE}
+# Example from https://github.com/lionel-/ggstance
 library("ggplot2")
 library("ggstance")
 
