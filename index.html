@@ -7,20 +7,23 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 <title>ggplot2 extensions</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
 
 <!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/styles.css" rel="stylesheet">
+
 
 <!-- Polyfill JS -->
 <script src="js/polyfill.js"></script>
@@ -59,12 +62,53 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <!--html_preserve-->
 
@@ -79,17 +123,22 @@ img {
   </nav>
 </div>
 
-<div class="showcase-header hidden">
+<div class="showcase-header">
 
   <div id = "showcase-intro">
     ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
   </div>
 
+<div class="container-fluid">
   <div class="row">
 
     <div class="col-sm-4">
       <div class="list-group">
-        <a href="ggiraph.html" class="list-group-item">
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+       <a href="ggiraph.html" class="list-group-item">
           <h5 class="list-group-item-heading">ggiraph</h5>
           <p class="list-group-item-text">Make ggplot interactive</p>
         </a>
@@ -97,25 +146,52 @@ img {
           <h5 class="list-group-item-heading">ggstance</h5>
           <p class="list-group-item-text">Horizontal versions of ggplot2 geoms</p>
         </a>
+        
+        <a href="ggalt.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggalt</h5>
+          <p class="list-group-item-text">Extra coordinate systems, geoms & stats</p>
+        </a>
+        
+        <a href="ggforce.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggforce</h5>
+          <p class="list-group-item-text">Accelarating ggplot2</p>
+        </a>
+        
+        <a href="ggrepel.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggrepel</h5>
+          <p class="list-group-item-text">Repel overlapping text labels</p>
+        </a>
+        
+        <a href="ggraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggraph</h5>
+          <p class="list-group-item-text">Plot graph-like data structures</p>
+        </a>
+        
+        <a href="ggpmisc.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggpmisc</h5>
+          <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
+        </a>
 
       </div> <!-- list-group -->
 
     </div> <!-- col-sm-4 -->
 
-    <div class="col-sm-8" id="showcase-body">
-
-    </div> <!-- col-sm-8 -->
+    <div class="col-sm-8" id="page-body"></div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
+</div>
 
 </div> <!-- showcase-header -->
 
-<div id="page-body"></div>
+
 
 <!--/html_preserve-->
 
-<div id="header">
+<div class="fluid-row" id="header">
+
+
 <h1 class="title">ggplot2 extensions</h1>
+
 </div>
 
 
@@ -213,9 +289,9 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
 
       <div class="col-sm-5 benefits">
         <div class="hidden-xs">&nbsp;</div>
-        <h4>A List of ggplot2 Extensions</h4>
+        <h4>A List of gglot2 extensions</h4>
         <ul>
-          <li>This site tracks and lists <strong>ggplot2</strong> extenstions developed by R users in the community.</li>
+          <li>This site tracks and lists <strong>gglot2</strong> extenstions developed by R users in the community.</li>
           <li>The aim is to make it easy for R users to find developed extensions.</li>
         </ul>
       </div>
@@ -292,7 +368,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
   <h3>Submit your extension</h3>
   <div class="row">
     <div class="col-sm-9">
-      <p>Submit your ggplot2 extension so that other R users can easily find them. Either create an issue or a pull request on github.</p>
+      <p>Submit your ggplot2 extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
     </div>
     <div class="col-sm-3">
       <p><a class="btn btn-primary" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io" target="_blank" role="button">Submit your Extension &raquo;</a></p>
@@ -348,6 +424,8 @@ $(document).ready(function () {
 });
 
 </script>
+
+
 
 </div>
 
