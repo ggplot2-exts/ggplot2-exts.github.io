@@ -20,7 +20,9 @@
 <script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
 
 <!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/styles.css" rel="stylesheet">
+
 
 <!-- Polyfill JS -->
 <script src="js/polyfill.js"></script>
@@ -85,6 +87,7 @@ img {
     ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
   </div>
 
+<div class="container-fluid">
   <div class="row">
 
     <div class="col-sm-4">
@@ -102,22 +105,7 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div class="col-sm-8" id="showcase-body"></div> <!-- col-sm-8 -->
-
-  </div> <!-- row -->
-
-</div> <!-- showcase-header -->
-
-<div id="page-body"></div>
-
-<!--/html_preserve-->
-
-<div id="header">
-<h1 class="title">ggplot2 extensions: ggstance</h1>
-</div>
-
-
-<div id="ggstance" class="section level3">
+    <div id="ggstance" class="col-sm-8">
 <h3>ggstance</h3>
 <p><a href="https://github.com/lionel-/ggstance" class="uri">https://github.com/lionel-/ggstance</a></p>
 <p>ggstance implements horizontal versions of common ggplot2 geoms.</p>
@@ -134,7 +122,21 @@ ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
   geom_boxplot() +
   coord_flip()</code></pre>
 <p><img src="ggstance_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
 </div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
 
 
 </div> <!-- page-body -->

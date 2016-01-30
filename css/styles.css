@@ -19,6 +19,10 @@
   background-image: none
 }
 
+.container-fluid {
+  margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px
+}
+
 #showcase-intro {
   margin-bottom: 30px;
 }
