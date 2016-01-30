@@ -1,3 +1,7 @@
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+  background-color: #FF7518;
+}
+
 .header {
   margin-top: 18px;
 }
@@ -12,7 +16,7 @@
 }
 
 .carousel-control.left, .carousel-control.right {
-  background-image: url("images/background.png")
+  background-image: none
 }
 
 #showcase-intro {
