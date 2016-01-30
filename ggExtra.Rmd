@@ -1,0 +1,26 @@
+---
+title: "ggplot2 extensions: ggExtra"
+---
+
+### ggExtra
+[https://github.com/daattali/ggExtra](https://github.com/daattali/ggExtra)
+
+[Live demo](http://daattali.com/shiny/ggExtra-ggMarginal-demo/)
+
+ggExtra lets you add marginal density plots or histograms to ggplot2 scatterplots
+
+```{r message=FALSE,warning=FALSE}
+library("ggplot2")
+library("ggExtra")
+
+# Basic usage
+set.seed(30)
+df <- data.frame(x = rnorm(500, 50, 10), y = runif(500, 0, 50))
+p <- ggplot(df, aes(x, y)) + geom_point()
+```
+
+```{r message=FALSE,warning=FALSE}
+ggMarginal(p)
+ggMarginal(p, colour = "red")
+ggMarginal(p, type = "histogram")
+```
