@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggstance</title>
+<title>ggplot2 extensions: ggrepel</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -130,23 +130,33 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggstance" class="col-sm-8">
-<h3>ggstance</h3>
-<p><a href="https://github.com/lionel-/ggstance" class="uri">https://github.com/lionel-/ggstance</a></p>
-<p>ggstance implements horizontal versions of common ggplot2 geoms.</p>
-<pre class="r"><code># Example from https://github.com/lionel-/ggstance
-library(&quot;ggplot2&quot;)
-library(&quot;ggstance&quot;)
+    <div id="ggrepel" class="col-sm-8">
+<h3>ggrepel</h3>
+<p><a href="https://github.com/slowkow/ggrepel" class="uri">https://github.com/slowkow/ggrepel</a></p>
+<p>Repel overlapping text labels away from each other.</p>
+<pre class="r"><code># Example from https://github.com/slowkow/ggrepel
+library(ggplot2)
+library(ggrepel)
 
-# Vertical
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># Horizontal with coord_flip()
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot() +
-  coord_flip()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+## We can repel the text labels away from each other by loading ggrepel and using geom_text_repel instead:
+set.seed(42)
+dat &lt;- mtcars[1:8,]
+ggplot(dat) +
+  geom_point(aes(wt, mpg), color = &#39;red&#39;) +
+  geom_text_repel(aes(wt, mpg, label = rownames(dat))) +
+  theme_classic(base_size = 16)</code></pre>
+<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>#geom_label_repel is based on geom_label.
+set.seed(42)
+ggplot(dat) +
+  geom_point(aes(wt, mpg)) +
+  geom_label_repel(
+    aes(wt, mpg, fill = factor(cyl), label = rownames(dat)),
+    fontface = &#39;bold&#39;, color = &#39;white&#39;,
+    box.padding = unit(0.25, &quot;lines&quot;)
+  ) +
+  theme_classic(base_size = 16)</code></pre>
+<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
@@ -157,6 +167,7 @@ ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
 
 
 <!--/html_preserve-->
+
 
 
 

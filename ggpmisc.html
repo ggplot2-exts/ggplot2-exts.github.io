@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggstance</title>
+<title>ggplot2 extensions: ggpmisc</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -130,23 +130,31 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggstance" class="col-sm-8">
-<h3>ggstance</h3>
-<p><a href="https://github.com/lionel-/ggstance" class="uri">https://github.com/lionel-/ggstance</a></p>
-<p>ggstance implements horizontal versions of common ggplot2 geoms.</p>
-<pre class="r"><code># Example from https://github.com/lionel-/ggstance
-library(&quot;ggplot2&quot;)
-library(&quot;ggstance&quot;)
+    <div id="ggpmisc" class="col-sm-8">
+<h3>ggpmisc</h3>
+<p><a href="https://cran.rstudio.com/web/packages/ggpmisc/" class="uri">https://cran.rstudio.com/web/packages/ggpmisc/</a></p>
+<p>Miscellaneous Extensions to ‘ggplot2’.</p>
+<pre class="r"><code># Example from https://cran.rstudio.com/web/packages/ggpmisc/vignettes/examples.html
+library(ggplot2)
+library(ggpmisc)
 
-# Vertical
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># Horizontal with coord_flip()
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot() +
-  coord_flip()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+## stat_poly_eq()
+
+## We generate some artificial data.
+set.seed(4321)
+# generate artificial data
+x &lt;- 1:100
+y &lt;- (x + x^2 + x^3) + rnorm(length(x), mean = 0, sd = mean(x^3) / 4)
+my.data &lt;- data.frame(x, y, group = c(&quot;A&quot;, &quot;B&quot;), y2 = y * c(0.5,2))
+
+formula &lt;- y ~ poly(x, 3, raw = TRUE)
+ggplot(my.data, aes(x, y2, colour = group)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, formula = formula) +
+  stat_poly_eq(aes(label = ..eq.label..), vjust = c(-8, 0),
+               formula = formula, parse = TRUE) +
+  theme_bw()</code></pre>
+<p><img src="ggpmisc_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->

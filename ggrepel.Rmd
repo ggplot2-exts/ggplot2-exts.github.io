@@ -1,0 +1,33 @@
+---
+title: "ggplot2 extensions: ggrepel"
+---
+
+### ggrepel
+<https://github.com/slowkow/ggrepel>
+
+Repel overlapping text labels away from each other.
+
+```{r, message=FALSE,warning=FALSE}
+# Example from https://github.com/slowkow/ggrepel
+library(ggplot2)
+library(ggrepel)
+
+## We can repel the text labels away from each other by loading ggrepel and using geom_text_repel instead:
+set.seed(42)
+dat <- mtcars[1:8,]
+ggplot(dat) +
+  geom_point(aes(wt, mpg), color = 'red') +
+  geom_text_repel(aes(wt, mpg, label = rownames(dat))) +
+  theme_classic(base_size = 16)
+
+#geom_label_repel is based on geom_label.
+set.seed(42)
+ggplot(dat) +
+  geom_point(aes(wt, mpg)) +
+  geom_label_repel(
+    aes(wt, mpg, fill = factor(cyl), label = rownames(dat)),
+    fontface = 'bold', color = 'white',
+    box.padding = unit(0.25, "lines")
+  ) +
+  theme_classic(base_size = 16)
+```
