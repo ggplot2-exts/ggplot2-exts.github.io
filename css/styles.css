@@ -12,7 +12,7 @@
 }
 
 .carousel-control.left, .carousel-control.right {
-  background-image: none
+  background-image: url("images/background.png")
 }
 
 #showcase-intro {
