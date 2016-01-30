@@ -1,0 +1,20 @@
+---
+title: "ggplot2 extensions: geomnet"
+---
+
+### geomnet
+<https://github.com/sctyner/geomnet>
+
+geomnet implements network visualizations in ggplot2 via geom_net.
+
+```{r message=FALSE,warning=FALSE}
+# Example from https://github.com/sctyner/geomnet
+library(ggplot2)
+library(geomnet)
+
+data(blood)
+
+ggplot(data = blood$edges, aes(from_id = from, to_id = to)) +
+  geom_net(vertices=blood$vertices, aes(colour=..type..)) + 
+  theme_net()
+```

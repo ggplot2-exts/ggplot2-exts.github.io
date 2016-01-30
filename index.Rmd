@@ -160,6 +160,12 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
         <div class="col-xs-6 col-sm-3">
           <a href="ggstance.html"><img src="images/carousel-ggstance.png"/></a>
         </div>
+        <div class="col-xs-6 col-sm-3">
+          <a href="ggalt.html"><img src="images/carousel-ggalt.png"/></a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <a href="ggforce.html"><img src="images/carousel-ggforce.png"/></a>
+        </div>
       </div>
     </div>
   </div>
@@ -178,7 +184,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
       <p>Submit your ggplot2 extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
     </div>
     <div class="col-sm-3">
-      <p><a class="btn btn-primary" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io" target="_blank" role="button">Submit your Extension &raquo;</a></p>
+      <p><a class="btn btn-primary" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io/tree/dev" target="_blank" role="button">Submit your Extension &raquo;</a></p>
     </div>
   </div>
 </div>

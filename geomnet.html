@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggalt</title>
+<title>ggplot2 extensions: geomnet</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -135,34 +135,20 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggalt" class="col-sm-8">
-<h3>ggalt</h3>
-<p><a href="https://github.com/hrbrmstr/ggalt" class="uri">https://github.com/hrbrmstr/ggalt</a></p>
-<p>A compendium of ‘geoms’, ‘coords’ and ‘stats’ for ‘ggplot2’, including splines, 1d and 2d densities, univariate average shifted histograms and a new map coordinate system based on the ‘PROJ.4’-library..</p>
-<pre class="r"><code># Example from https://github.com/hrbrmstr/ggalt
+    <div id="geomnet" class="col-sm-8">
+<h3>geomnet</h3>
+<p><a href="https://github.com/sctyner/geomnet" class="uri">https://github.com/sctyner/geomnet</a></p>
+<p>geomnet implements network visualizations in ggplot2 via geom_net.</p>
+<pre class="r"><code># Example from https://github.com/sctyner/geomnet
 library(ggplot2)
-library(gridExtra)
-library(ggalt)
+library(geomnet)
 
-set.seed(1492)
-dat &lt;- data.frame(x=c(1:10, 1:10, 1:10),
-                  y=c(sample(15:30, 10), 2*sample(15:30, 10), 3*sample(15:30, 10)),
-                  group=factor(c(rep(1, 10), rep(2, 10), rep(3, 10)))
-)
+data(blood)
 
-ggplot(dat, aes(x, y, group=group, color=factor(group))) +
-  geom_point(color=&quot;black&quot;) +
-  geom_smooth(se=FALSE, linetype=&quot;dashed&quot;, size=0.5) +
-  geom_xspline(spline_shape=-0.4, size=0.5)</code></pre>
-<p><img src="ggalt_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code>## Alternate 2D density plots
-
-ggplot(faithful, aes(x = eruptions, y = waiting)) +
-       geom_point() +
-       xlim(0.5, 6) +
-       ylim(40, 110) + 
-  geom_bkde2d(bandwidth=c(0.5, 4))</code></pre>
-<p><img src="ggalt_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+ggplot(data = blood$edges, aes(from_id = from, to_id = to)) +
+  geom_net(vertices=blood$vertices, aes(colour=..type..)) + 
+  theme_net()</code></pre>
+<p><img src="geomnet_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->

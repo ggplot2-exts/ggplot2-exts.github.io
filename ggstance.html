@@ -125,6 +125,11 @@ img {
           <h5 class="list-group-item-heading">ggpmisc</h5>
           <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
         </a>
+        
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
 
       </div> <!-- list-group -->
 
@@ -147,6 +152,11 @@ ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
   geom_boxplot() +
   coord_flip()</code></pre>
 <p><img src="ggstance_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># In ggstance, you supply aesthetics in their natural order:
+# Horizontal with ggstance
+ggplot(mpg, aes(hwy, class, fill = factor(cyl))) +
+  geom_boxploth()</code></pre>
+<p><img src="ggstance_files/figure-html/unnamed-chunk-1-3.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
@@ -157,6 +167,8 @@ ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
 
 
 <!--/html_preserve-->
+
+
 
 
 

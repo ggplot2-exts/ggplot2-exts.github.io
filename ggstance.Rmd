@@ -20,4 +20,9 @@ ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
 ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
   geom_boxplot() +
   coord_flip()
+
+# In ggstance, you supply aesthetics in their natural order:
+# Horizontal with ggstance
+ggplot(mpg, aes(hwy, class, fill = factor(cyl))) +
+  geom_boxploth()
 ```
