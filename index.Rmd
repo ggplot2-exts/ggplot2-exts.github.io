@@ -96,9 +96,9 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
 
       <div class="col-sm-5 benefits">
         <div class="hidden-xs">&nbsp;</div>
-        <h4>A List of gglot2 extensions</h4>
+        <h4>A List of ggplot2 extensions</h4>
         <ul>
-          <li>This site tracks and lists <strong>gglot2</strong> extenstions developed by R users in the community.</li>
+          <li>This site tracks and lists <strong>ggplot2</strong> extensions developed by R users in the community.</li>
           <li>The aim is to make it easy for R users to find developed extensions.</li>
         </ul>
       </div>
@@ -181,7 +181,7 @@ $(document).on("slide.bs.carousel", "#widget-carousel", function(e) {
   <h3>Submit your extension</h3>
   <div class="row">
     <div class="col-sm-9">
-      <p>Submit your ggplot2 extension so that other R users can easily find. Do so by just filing an issue on github or creating a pull request.</p>
+      <p>Submit your ggplot2 extensions so that other R users can easily find them. To do so, simply create an issue or a pull request on the <a href="https://github.com/ggplot2-exts/ggplot2-exts.github.io/tree/dev" target="_blank">github</a> repo.</p>
     </div>
     <div class="col-sm-3">
       <p><a class="btn btn-primary" href="https://github.com/ggplot2-exts/ggplot2-exts.github.io/tree/dev" target="_blank" role="button">Submit your Extension &raquo;</a></p>
