@@ -7,17 +7,18 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 <title>ggplot2 extensions: ggraph</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap/shim/respond.min.js"></script>
 
 <!-- Styles for this site -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,12 +62,53 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <!--html_preserve-->
 
@@ -92,7 +134,11 @@ img {
 
     <div class="col-sm-4">
       <div class="list-group">
-        <a href="ggiraph.html" class="list-group-item">
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+       <a href="ggiraph.html" class="list-group-item">
           <h5 class="list-group-item-heading">ggiraph</h5>
           <p class="list-group-item-text">Make ggplot interactive</p>
         </a>
@@ -130,7 +176,26 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggraph" class="col-sm-8">
+    <div class="col-sm-8" id="page-body"></div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
+</div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+<div class="fluid-row" id="header">
+
+
+<h1 class="title">ggplot2 extensions: ggraph</h1>
+
+</div>
+
+
+<div id="ggraph" class="section level3">
 <h3>ggraph</h3>
 <p><a href="https://github.com/thomasp85/ggraph" class="uri">https://github.com/thomasp85/ggraph</a></p>
 <p>ggraph is an extension of ggplot2 tailored at plotting graph-like data structures (graphs, networks, trees, hierarchies…).</p>
@@ -153,21 +218,7 @@ ggraph(graph = gr, layout = &#39;fr&#39;) +
     coord_fixed() + 
     ggforce::theme_no_axes()</code></pre>
 <p><img src="images/ggraph.png" alt="ggraph" /></p>
-</div> <!-- col-sm-8 -->
-
-  </div> <!-- row -->
 </div>
-
-</div> <!-- showcase-header -->
-
-
-
-<!--/html_preserve-->
-
-
-
-
-
 
 
 </div> <!-- page-body -->
@@ -215,6 +266,8 @@ $(document).ready(function () {
 });
 
 </script>
+
+
 
 </div>
 

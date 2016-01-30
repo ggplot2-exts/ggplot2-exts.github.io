@@ -11,7 +11,7 @@
 
 
 
-<title>ggplot2 extensions: ggforce</title>
+<title>ggplot2 extensions: geomnet</title>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -190,45 +190,25 @@ $(document).ready(function () {
 <div class="fluid-row" id="header">
 
 
-<h1 class="title">ggplot2 extensions: ggforce</h1>
+<h1 class="title">ggplot2 extensions: geomnet</h1>
 
 </div>
 
 
-<div id="ggforce" class="section level3">
-<h3>ggforce</h3>
-<p><a href="https://github.com/thomasp85/ggforce" class="uri">https://github.com/thomasp85/ggforce</a></p>
-<p>ggforce is aimed at providing missing functionality to ggplot2 through the extension system introduced with ggplot2 v2.0.0.</p>
-<pre class="r"><code># Example from https://github.com/thomasp85/ggforce
+<div id="geomnet" class="section level3">
+<h3>geomnet</h3>
+<p><a href="https://github.com/sctyner/geomnet" class="uri">https://github.com/sctyner/geomnet</a></p>
+<p>geomnet implements network visualizations in ggplot2 via geom_net.</p>
+<pre class="r"><code># Example from https://github.com/lionel-/ggstance
 library(ggplot2)
-library(ggforce)
+library(geomnet)
 
-# We&#39;ll start by defining some dummy data
-pie &lt;- data.frame(
-    state = c(&#39;eaten&#39;, &#39;eaten but said you didn\&#39;t&#39;, &#39;cat took it&#39;, 
-              &#39;for tonight&#39;, &#39;will decompose slowly&#39;),
-    focus = c(0.2, 0, 0, 0, 0),
-    start = c(0, 1, 2, 3, 4),
-    end = c(1, 2, 3, 4, 2*pi),
-    amount = c(4,3, 1, 1.5, 6),
-    stringsAsFactors = FALSE
-)
+data(blood)
 
-p &lt;- ggplot() + theme_no_axes() + coord_fixed()
-
-# For low level control you define the start and end angles yourself
-p + geom_arc_bar(aes(x0 = 0, y0 = 0, r0 = 0, r = 1, start = start, end = end, 
-                     fill = state),
-                 data = pie)</code></pre>
-<p><img src="ggforce_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># Here are some data describing some circles
-circles &lt;- data.frame(
-    x0 = rep(1:3, 2),
-    y0 =  rep(1:2, each=3),
-    r = seq(0.1, 1, length.out = 6)
-)
-ggplot() + geom_circle(aes(x0=x0, y0=y0, r=r, fill=r), data=circles)</code></pre>
-<p><img src="ggforce_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+ggplot(data = blood$edges, aes(from_id = from, to_id = to)) +
+  geom_net(vertices=blood$vertices, aes(colour=..type..)) + 
+  theme_net()</code></pre>
+<p><img src="geomnet_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
 </div>
 
 
