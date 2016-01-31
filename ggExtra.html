@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggstance</title>
+<title>ggplot2 extensions: ggExtra</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -139,28 +139,24 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggstance" class="col-sm-8">
-<h3>ggstance</h3>
-<p><a href="https://github.com/lionel-/ggstance" class="uri">https://github.com/lionel-/ggstance</a></p>
-<p>ggstance implements horizontal versions of common ggplot2 geoms.</p>
-<pre class="r"><code># Example from https://github.com/lionel-/ggstance
-library(&quot;ggplot2&quot;)
-library(&quot;ggstance&quot;)
+    <div id="ggextra" class="col-sm-8">
+<h3>ggExtra</h3>
+<p><a href="https://github.com/daattali/ggExtra" class="uri">https://github.com/daattali/ggExtra</a></p>
+<p><a href="http://daattali.com/shiny/ggExtra-ggMarginal-demo/">Live demo</a></p>
+<p>ggExtra lets you add marginal density plots or histograms to ggplot2 scatterplots</p>
+<pre class="r"><code>library(&quot;ggplot2&quot;)
+library(&quot;ggExtra&quot;)
 
-# Vertical
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># Horizontal with coord_flip()
-ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +
-  geom_boxplot() +
-  coord_flip()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># In ggstance, you supply aesthetics in their natural order:
-# Horizontal with ggstance
-ggplot(mpg, aes(hwy, class, fill = factor(cyl))) +
-  geom_boxploth()</code></pre>
-<p><img src="ggstance_files/figure-html/unnamed-chunk-1-3.png" title="" alt="" width="576" /></p>
+# Basic usage
+set.seed(30)
+df &lt;- data.frame(x = rnorm(500, 50, 10), y = runif(500, 0, 50))
+p &lt;- ggplot(df, aes(x, y)) + geom_point()</code></pre>
+<pre class="r"><code>ggMarginal(p)</code></pre>
+<p><img src="ggExtra_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggMarginal(p, colour = &quot;red&quot;)</code></pre>
+<p><img src="ggExtra_files/figure-html/unnamed-chunk-2-2.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggMarginal(p, type = &quot;histogram&quot;)</code></pre>
+<p><img src="ggExtra_files/figure-html/unnamed-chunk-2-3.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
