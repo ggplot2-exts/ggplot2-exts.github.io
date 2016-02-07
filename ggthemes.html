@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggforce</title>
+<title>ggplot2 extensions: ggthemes</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,44 +172,40 @@ img {
 <!--/html_preserve-->
 
 <div id="header">
-<h1 class="title">ggplot2 extensions: ggforce</h1>
+<h1 class="title">ggplot2 extensions: ggthemes</h1>
 </div>
 
 
-<div id="ggforce" class="section level3">
-<h3>ggforce</h3>
-<p><a href="https://github.com/thomasp85/ggforce" class="uri">https://github.com/thomasp85/ggforce</a></p>
-<p>ggforce is aimed at providing missing functionality to ggplot2 through the extension system introduced with ggplot2 v2.0.0.</p>
-<pre class="r"><code># Example from https://github.com/thomasp85/ggforce
+<div id="ggthemes" class="section level3">
+<h3>ggthemes</h3>
+<p><a href="https://github.com/jrnold/ggthemes" class="uri">https://github.com/jrnold/ggthemes</a></p>
+<p>Some extra geoms, scales, and themes for ggplot</p>
+<pre class="r"><code># Example from https://github.com/jrnold/ggthemes
 library(ggplot2)
-library(ggforce)
+library(ggthemes)
 
-# We&#39;ll start by defining some dummy data
-pie &lt;- data.frame(
-    state = c(&#39;eaten&#39;, &#39;eaten but said you didn\&#39;t&#39;, &#39;cat took it&#39;, 
-              &#39;for tonight&#39;, &#39;will decompose slowly&#39;),
-    focus = c(0.2, 0, 0, 0, 0),
-    start = c(0, 1, 2, 3, 4),
-    end = c(1, 2, 3, 4, 2*pi),
-    amount = c(4,3, 1, 1.5, 6),
-    stringsAsFactors = FALSE
-)
+p2 &lt;- ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(gear))) +
+  geom_point() +
+  ggtitle(&quot;Cars&quot;)
 
-p &lt;- ggplot() + theme_no_axes() + coord_fixed()
-
-# For low level control you define the start and end angles yourself
-p + geom_arc_bar(aes(x0 = 0, y0 = 0, r0 = 0, r = 1, start = start, end = end, 
-                     fill = state),
-                 data = pie)</code></pre>
-<p><img src="ggforce_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code># Here are some data describing some circles
-circles &lt;- data.frame(
-    x0 = rep(1:3, 2),
-    y0 =  rep(1:2, each=3),
-    r = seq(0.1, 1, length.out = 6)
-)
-ggplot() + geom_circle(aes(x0=x0, y0=y0, r=r, fill=r), data=circles)</code></pre>
-<p><img src="ggforce_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+# Economist theme
+# A theme that approximates the style of plots in The Economist magazine.
+p2 + theme_economist() + scale_colour_economist() </code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Stata theme
+# Themes and scales based on the graph schemes in Stata.
+p2 + theme_stata() + scale_colour_stata()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Fivethirtyeight theme
+# Theme and color palette based on the plots at fivethirtyeight.com.
+p2 + geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  scale_color_fivethirtyeight(&quot;cyl&quot;) +
+  theme_fivethirtyeight()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-3.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Tableau Scales
+# Color, fill, and shape scales based on those used in the Tableau software.
+p2 + theme_igray() + scale_colour_tableau()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-4.png" title="" alt="" width="576" /></p>
 </div>
 
 

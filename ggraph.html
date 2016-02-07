@@ -138,35 +138,29 @@ img {
           <h5 class="list-group-item-heading">gganimate</h5>
           <p class="list-group-item-text">Create easy animations with ggplot2</p>
         </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        
 
       </div> <!-- list-group -->
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggraph" class="col-sm-8">
-<h3>ggraph</h3>
-<p><a href="https://github.com/thomasp85/ggraph" class="uri">https://github.com/thomasp85/ggraph</a></p>
-<p>ggraph is an extension of ggplot2 tailored at plotting graph-like data structures (graphs, networks, trees, hierarchies…).</p>
-<pre class="r"><code># Example from https://github.com/thomasp85/ggraph
-library(ggplot2)
-library(ggraph)
-
-# igraph
-# We&#39;ll just make up some data
-library(igraph)
-gr &lt;- erdos.renyi.game(n=20, p=0.2)
-E(gr)$weight &lt;- sample(1:5, gsize(gr), TRUE)
-V(gr)$class &lt;- sample(letters[1:3], gorder(gr), TRUE)
-
-# Plotting this is exactly as plotting a dendrogram
-# All igraph layouts are available - here we use Fructerman and Reingold
-ggraph(graph = gr, layout = &#39;fr&#39;) + 
-    geom_edge_link(aes(size = weight), color = &#39;grey&#39;, alpha = 0.5) + 
-    geom_node_point(aes(color = class), size = 10) + 
-    coord_fixed() + 
-    ggforce::theme_no_axes()</code></pre>
-<p><img src="images/ggraph.png" alt="ggraph" /></p>
-</div> <!-- col-sm-8 -->
+    <div class="col-sm-8" id="page-body"></div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
 </div>
@@ -177,10 +171,117 @@ ggraph(graph = gr, layout = &#39;fr&#39;) +
 
 <!--/html_preserve-->
 
+<div id="header">
+<h1 class="title">ggplot2 extensions: ggraph</h1>
+</div>
 
 
+<div id="ggraph" class="section level3">
+<h3>ggraph</h3>
+<p><a href="https://github.com/thomasp85/ggraph" class="uri">https://github.com/thomasp85/ggraph</a></p>
+<p>ggraph extends the grammar of graphics provided by ggplot2 to cover graph and network data. This type of data consists of nodes and edges and are not optimally stored in a single data.frame, as expected by ggplot2. Furthermore the spatial position of nodes (end thereby edges) are more often defined by the graph structure through a layout function, rather than mapped to specific parameters. ggraph handles all of these issues in an extensible way that lets the user gradually build up their graph visualization with different layers as expected from ggplot2, without needing to worry too much about how positions and other metrics are derived.</p>
+<p>While node-edge diagrams are the visualization people often relate to graph visualizations it is by far the only one, and ggraph have, or will have support for all types of common and uncommon visualization types.</p>
+<div id="a-simple-example" class="section level4">
+<h4>A simple example</h4>
+<pre class="r"><code>library(ggraph)
+library(igraph)
 
+# To show a simple example of the API we consider a hierarchy
+## Create a graph of the flare class hierarchy
+flareGraph &lt;- graph_from_data_frame(flare$edges, vertices = flare$vertices)
+ggraph(flareGraph, &#39;igraph&#39;, algorithm = &#39;tree&#39;) + 
+  geom_edge_link() +
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+<p>Here we use the reingold-tilford algorithm to position the nodes in a hierarchy and draw straight edges between them using the <code>geom_edge_link</code> function. There are ample opportunity for modifications though:</p>
+<pre class="r"><code>ggraph(flareGraph, &#39;igraph&#39;, algorithm = &#39;tree&#39;, circular = TRUE) + 
+  geom_edge_diagonal(aes(alpha = ..index..)) +
+  coord_fixed() + 
+  scale_edge_alpha(&#39;Direction&#39;, guide = &#39;edge_direction&#39;) +
+  geom_node_point(aes(filter = degree(flareGraph, mode = &#39;out&#39;) == 0), 
+                 color = &#39;steelblue&#39;, size = 1) +
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="576" /></p>
+<p>Here we transform the layout into a circular representation and choose to draw the edges as diagonals instead of straight lines using <code>geom_edge_diagonal</code>. We indicate the direction of the edge by mapping the alpha value to it, and shows this using the edge_direction guide. Lastly we plot the leaf nodes using a filter function.</p>
+</div>
+<div id="other-layouts" class="section level4">
+<h4>Other layouts</h4>
+<p>But what if my data is not hierarchical, you ask. Well ggraph have access to all the layouts implemented in igraph, and then some (more on that later). To show this we take a look at some colonial Americans:</p>
+<pre class="r"><code>whigsGraph &lt;- graph_from_adjacency_matrix(whigs %*% t(whigs), mode = &#39;upper&#39;, 
+                                          weighted = TRUE, diag = FALSE)
+V(whigsGraph)$degree &lt;- degree(whigsGraph)
+ggraph(whigsGraph, &#39;igraph&#39;, algorithm = &#39;kk&#39;) + 
+  geom_edge_link0(aes(width = weight), edge_alpha = 0.1) + 
+  geom_node_point(aes(size = degree), colour = &#39;forestgreen&#39;) + 
+  geom_node_text(aes(label = name, filter = degree &gt; 150), color = &#39;white&#39;, 
+                 size = 3) + 
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="576" /></p>
+<p>So it seems Paul Reveres was really in the center of it all (more on this <a href="http://kieranhealy.org/blog/archives/2013/06/09/using-metadata-to-find-paul-revere/">here</a>).</p>
+<p>Here we use the kamada kawai layout to lay out the nodes and draw the edges using the <code>geom_edge_link0</code> (notice the trailing 0 - this is a faster version than the standard but it doesn’t support gradients along the edge). We draw the nodes scaling the size to the degree and lastly we add node labels to the nodes with a degree larger than 150.</p>
+<p><em>What if I don’t like nodes and edges?</em></p>
+<p>Well you could try to make a treemap. Let’s turn to our flare hierarchy again:</p>
+<pre class="r"><code># Well add some additional information using the treeApply helpers
+flareGraph &lt;- treeApply(flareGraph, function(node, parent, depth, tree) {
+  tree &lt;- set_vertex_attr(tree, &#39;depth&#39;, node, depth)
+  if (depth == 1) {
+    tree &lt;- set_vertex_attr(tree, &#39;class&#39;, node, V(tree)$shortName[node])
+  } else if (depth &gt; 1) {
+    tree &lt;- set_vertex_attr(tree, &#39;class&#39;, node, V(tree)$class[parent])
+  }
+  tree
+})
+V(flareGraph)$leaf &lt;- degree(flareGraph, mode = &#39;out&#39;) == 0
 
+ggraph(flareGraph, &#39;treemap&#39;, weight = &#39;size&#39;) + 
+  geom_treemap(aes(fill = class, filter = leaf, alpha = depth), colour = NA) + 
+  geom_treemap(aes(size = depth), fill = NA, colour = &#39;white&#39;) + 
+  geom_node_text(aes(filter = depth == 1, label = shortName), size = 3) +
+  scale_fill_brewer(type = &#39;qual&#39;, palette = 3, guide = &#39;none&#39;) + 
+  scale_size(range = c(3, 0.2), guide = &#39;none&#39;) + 
+  scale_alpha(range = c(1, 0.6), guide = &#39;none&#39;) +
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="576" /></p>
+<p><em>What if I don’t use igraph?</em></p>
+<p>There is also support for dendrogram objects and almost anything else can be converted to either igraph or dendrogram. Let’s look at a dendrogram object:</p>
+<pre class="r"><code>irisCluster &lt;- hclust(dist(iris[, -5]), method = &#39;average&#39;)
+irisCluster &lt;- as.dendrogram(irisCluster)
+
+# treeApply also works for dendrogram
+irisCluster &lt;- treeApply(irisCluster, function(node, children, ...) {
+  if (is.leaf(node)) {
+    index &lt;- as.integer(attr(node, &#39;label&#39;))
+    attr(node, &#39;nodePar&#39;) &lt;- list(species = as.character(iris$Species[index]))
+  } else {
+    childSpecies &lt;- sapply(children, function(child) {
+      attr(child, &#39;nodePar&#39;)$species
+    })
+    if (length(unique(childSpecies)) == 1 &amp;&amp; !anyNA(childSpecies)) {
+      attr(node, &#39;nodePar&#39;) &lt;- list(species = childSpecies[1])
+    } else {
+      attr(node, &#39;nodePar&#39;) &lt;- list(species = NA)
+    }
+  }
+  node
+}, direction = &#39;up&#39;)
+
+ggraph(irisCluster, &#39;dendrogram&#39;, repel = TRUE, ratio = 10) + 
+  geom_edge_elbow2(aes(colour = node.species), 
+                   data = gEdges(&#39;long&#39;, nodePar = &#39;species&#39;)) + 
+  scale_edge_colour_brewer(&#39;Species&#39;, type = &#39;qual&#39;, na.value = &#39;black&#39;) + 
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="576" /></p>
+<p>Wait, what is that data argument? Most edge geoms comes in three flavors, a standard, a fast (the 0 one) and a slow (the 2 one). So why use the slow? It makes it possible to set interpolate edge aesthetics between the start and end point. Here we tell that colour should be mapped to the species of the nodes, and we tell that the edge data should contain the species parameter from the start and end nodes within the <code>gEdges()</code> call. Now we get a nice gradient from clusters with a common species towards clusters with mixed species.</p>
+<p>These are just a couple of examples of what is possible. Due to the layer approach to plotting edges and nodes you have full control over the look of your plot in a very expressive way. As it is a direct extension of ggplot2, it also comes with all the niceties from there, e.g. facetting:</p>
+<pre class="r"><code>highschoolGraph &lt;- graph_from_data_frame(highschool)
+
+ggraph(highschoolGraph, &#39;igraph&#39;, algorithm = &#39;kk&#39;) + 
+  geom_edge_fan(aes(alpha = ..index..)) + 
+  facet_wrap(~year) + 
+  ggforce::theme_no_axes()</code></pre>
+<p><img src="ggraph_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="576" /></p>
+</div>
+</div>
 
 
 </div> <!-- page-body -->
