@@ -160,23 +160,7 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div class="col-sm-8" id="page-body"></div> <!-- col-sm-8 -->
-
-  </div> <!-- row -->
-</div>
-
-</div> <!-- showcase-header -->
-
-
-
-<!--/html_preserve-->
-
-<div id="header">
-<h1 class="title">ggplot2 extensions: plotROC</h1>
-</div>
-
-
-<div id="plotroc" class="section level3">
+    <div id="plotroc" class="col-sm-8">
 <h3>plotROC</h3>
 <p><a href="https://github.com/sachsmc/plotROC" class="uri">https://github.com/sachsmc/plotROC</a></p>
 <p>Most ROC curve plots obscure the cutoff values and inhibit interpretation and comparison of multiple curves. This attempts to address those shortcomings by providing plotting and interactive tools. Functions are provided to generate an interactive ROC curve plot for web use, and print versions</p>
@@ -202,7 +186,21 @@ test &lt;- data.frame(D = D.ex, D.str = c(&quot;Healthy&quot;, &quot;Ill&quot;)[
 basicplot &lt;- ggplot(test, aes(d = D, m = M1)) + geom_roc()
 basicplot</code></pre>
 <p><img src="plotROC_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
 </div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
 
 
 </div> <!-- page-body -->
