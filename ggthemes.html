@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggrepel</title>
+<title>ggplot2 extensions: ggthemes</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,33 +160,36 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggrepel" class="col-sm-8">
-<h3>ggrepel</h3>
-<p><a href="https://github.com/slowkow/ggrepel" class="uri">https://github.com/slowkow/ggrepel</a></p>
-<p>Repel overlapping text labels away from each other.</p>
-<pre class="r"><code># Example from https://github.com/slowkow/ggrepel
+    <div id="ggthemes" class="col-sm-8">
+<h3>ggthemes</h3>
+<p><a href="https://github.com/jrnold/ggthemes" class="uri">https://github.com/jrnold/ggthemes</a></p>
+<p>Some extra geoms, scales, and themes for ggplot</p>
+<pre class="r"><code># Example from https://github.com/jrnold/ggthemes
 library(ggplot2)
-library(ggrepel)
+library(ggthemes)
 
-## We can repel the text labels away from each other by loading ggrepel and using geom_text_repel instead:
-set.seed(42)
-dat &lt;- mtcars[1:8,]
-ggplot(dat) +
-  geom_point(aes(wt, mpg), color = &#39;red&#39;) +
-  geom_text_repel(aes(wt, mpg, label = rownames(dat))) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code>#geom_label_repel is based on geom_label.
-set.seed(42)
-ggplot(dat) +
-  geom_point(aes(wt, mpg)) +
-  geom_label_repel(
-    aes(wt, mpg, fill = factor(cyl), label = rownames(dat)),
-    fontface = &#39;bold&#39;, color = &#39;white&#39;,
-    box.padding = unit(0.25, &quot;lines&quot;)
-  ) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+p2 &lt;- ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(gear))) +
+  geom_point() +
+  ggtitle(&quot;Cars&quot;)
+
+# Economist theme
+# A theme that approximates the style of plots in The Economist magazine.
+p2 + theme_economist() + scale_colour_economist() </code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Stata theme
+# Themes and scales based on the graph schemes in Stata.
+p2 + theme_stata() + scale_colour_stata()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Fivethirtyeight theme
+# Theme and color palette based on the plots at fivethirtyeight.com.
+p2 + geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  scale_color_fivethirtyeight(&quot;cyl&quot;) +
+  theme_fivethirtyeight()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-3.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Tableau Scales
+# Color, fill, and shape scales based on those used in the Tableau software.
+p2 + theme_igray() + scale_colour_tableau()</code></pre>
+<p><img src="ggthemes_files/figure-html/unnamed-chunk-1-4.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->

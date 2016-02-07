@@ -1,0 +1,36 @@
+---
+title: "ggplot2 extensions: ggthemes"
+---
+
+### ggthemes
+<https://github.com/jrnold/ggthemes>
+
+Some extra geoms, scales, and themes for ggplot
+
+```{r, message=FALSE,warning=FALSE}
+# Example from https://github.com/jrnold/ggthemes
+library(ggplot2)
+library(ggthemes)
+
+p2 <- ggplot(mtcars, aes(x = wt, y = mpg, colour = factor(gear))) +
+  geom_point() +
+  ggtitle("Cars")
+
+# Economist theme
+# A theme that approximates the style of plots in The Economist magazine.
+p2 + theme_economist() + scale_colour_economist() 
+
+# Stata theme
+# Themes and scales based on the graph schemes in Stata.
+p2 + theme_stata() + scale_colour_stata()
+
+# Fivethirtyeight theme
+# Theme and color palette based on the plots at fivethirtyeight.com.
+p2 + geom_smooth(method = "lm", se = FALSE) +
+  scale_color_fivethirtyeight("cyl") +
+  theme_fivethirtyeight()
+
+# Tableau Scales
+# Color, fill, and shape scales based on those used in the Tableau software.
+p2 + theme_igray() + scale_colour_tableau()
+```

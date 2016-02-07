@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggrepel</title>
+<title>ggplot2 extensions: ggnetwork</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,33 +160,49 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggrepel" class="col-sm-8">
-<h3>ggrepel</h3>
-<p><a href="https://github.com/slowkow/ggrepel" class="uri">https://github.com/slowkow/ggrepel</a></p>
-<p>Repel overlapping text labels away from each other.</p>
-<pre class="r"><code># Example from https://github.com/slowkow/ggrepel
+    <div id="ggnetwork" class="col-sm-8">
+<h3>ggnetwork</h3>
+<p><a href="https://github.com/briatte/ggnetwork" class="uri">https://github.com/briatte/ggnetwork</a></p>
+<p>The ggnetwork package provides a way to build network plots with ggplot2.</p>
+<pre class="r"><code># Example from https://briatte.github.io/ggnetwork/
 library(ggplot2)
-library(ggrepel)
+library(ggnetwork)
 
-## We can repel the text labels away from each other by loading ggrepel and using geom_text_repel instead:
-set.seed(42)
-dat &lt;- mtcars[1:8,]
-ggplot(dat) +
-  geom_point(aes(wt, mpg), color = &#39;red&#39;) +
-  geom_text_repel(aes(wt, mpg, label = rownames(dat))) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code>#geom_label_repel is based on geom_label.
-set.seed(42)
-ggplot(dat) +
-  geom_point(aes(wt, mpg)) +
-  geom_label_repel(
-    aes(wt, mpg, fill = factor(cyl), label = rownames(dat)),
-    fontface = &#39;bold&#39;, color = &#39;white&#39;,
-    box.padding = unit(0.25, &quot;lines&quot;)
-  ) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+# Let’s define a small random graph to illustrate each component of ggnetwork:
+library(network)
+library(sna)
+n = network(rgraph(10, tprob = 0.2), directed = FALSE)
+
+# Let’s now add categorical and continuous attributes for both edges and vertices
+n %v% &quot;family&quot; = sample(letters[1:3], 10, replace = TRUE)
+n %v% &quot;importance&quot; = sample(1:3, 10, replace = TRUE)
+
+# We now add a categorical edge attribute called &quot;type&quot;, 
+# which is set to either &quot;x&quot;, &quot;y&quot; or &quot;z&quot;, and a continuous vertex 
+# attribute called &quot;day&quot;, which is set to either 1, 2 or 3.
+e = network.edgecount(n)
+set.edge.attribute(n, &quot;type&quot;, sample(letters[24:26], e, replace = TRUE))
+set.edge.attribute(n, &quot;day&quot;, sample(1:3, e, replace = TRUE))
+
+# Let’s now draw the network edges using geom_edges
+# theme_blank
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = &quot;grey50&quot;) +
+  theme_blank()</code></pre>
+<p><img src="ggnetwork_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Let’s now draw the nodes using geom_nodes
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = &quot;grey50&quot;) +
+  geom_nodes(aes(color = family, size = importance)) +
+  theme_blank()</code></pre>
+<p><img src="ggnetwork_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+<pre class="r"><code># Let’s now add node labels.
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = &quot;black&quot;) +
+  geom_nodes(color = &quot;black&quot;, size = 8) +
+  geom_nodetext(aes(color = family, label = LETTERS[ vertex.names ]), fontface = &quot;bold&quot;) +
+  theme_blank()</code></pre>
+<p><img src="ggnetwork_files/figure-html/unnamed-chunk-1-3.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->

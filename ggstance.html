@@ -138,6 +138,23 @@ img {
           <h5 class="list-group-item-heading">gganimate</h5>
           <p class="list-group-item-text">Create easy animations with ggplot2</p>
         </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        
 
       </div> <!-- list-group -->
 
@@ -148,8 +165,8 @@ img {
 <p><a href="https://github.com/lionel-/ggstance" class="uri">https://github.com/lionel-/ggstance</a></p>
 <p>ggstance implements horizontal versions of common ggplot2 geoms.</p>
 <pre class="r"><code># Example from https://github.com/lionel-/ggstance
-library(&quot;ggplot2&quot;)
-library(&quot;ggstance&quot;)
+library(ggplot2)
+library(ggstance)
 
 # Vertical
 ggplot(mpg, aes(class, hwy, fill = factor(cyl))) +

@@ -1,0 +1,32 @@
+---
+title: "ggplot2 extensions: ggspectra"
+---
+
+### ggspectra
+<https://cran.rstudio.com/web/packages/ggspectra/>
+
+ggspectra extends ggplot2 with stats, geoms and annotations suitable for light spectra. It also defines **ggplot()** and **plot()** methods specialized for the classes defined in package **photobiology** for storing different types of spectral data.
+
+```{r, message=FALSE,warning=FALSE}
+# Example from https://cran.rstudio.com/web/packages/ggspectra/vignettes/user-guide.html
+library(ggplot2)
+library(photobiology)
+library(photobiologyWavebands)
+library(ggspectra)
+
+# We bind two spectra, to later on demonstrate grouping.
+two_suns.spct <- rbindspct(list(sun1 = sun.spct, sun2 = sun.spct * 2))
+
+# We change the default theme.
+theme_set(theme_bw())
+
+# ggplot() methods for spectra
+ggplot(sun.spct) + geom_line()
+
+# It is possible to the defaults by means of + and aes() as shown below.
+ggplot(two_suns.spct) + aes(color = spct.idx) + geom_line()
+
+# Several ggplot stats are defined by this package, for example:
+ggplot(sun.spct) + geom_line() + 
+  stat_peaks(shape = 21) + scale_fill_identity()
+```

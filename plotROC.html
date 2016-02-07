@@ -10,7 +10,7 @@
 
 
 
-<title>ggplot2 extensions: ggrepel</title>
+<title>ggplot2 extensions: plotROC</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,33 +160,32 @@ img {
 
     </div> <!-- col-sm-4 -->
 
-    <div id="ggrepel" class="col-sm-8">
-<h3>ggrepel</h3>
-<p><a href="https://github.com/slowkow/ggrepel" class="uri">https://github.com/slowkow/ggrepel</a></p>
-<p>Repel overlapping text labels away from each other.</p>
-<pre class="r"><code># Example from https://github.com/slowkow/ggrepel
+    <div id="plotroc" class="col-sm-8">
+<h3>plotROC</h3>
+<p><a href="https://github.com/sachsmc/plotROC" class="uri">https://github.com/sachsmc/plotROC</a></p>
+<p>Most ROC curve plots obscure the cutoff values and inhibit interpretation and comparison of multiple curves. This attempts to address those shortcomings by providing plotting and interactive tools. Functions are provided to generate an interactive ROC curve plot for web use, and print versions</p>
+<pre class="r"><code># Example from http://sachsmc.github.io/plotROC/
 library(ggplot2)
-library(ggrepel)
+library(plotROC)
 
-## We can repel the text labels away from each other by loading ggrepel and using geom_text_repel instead:
-set.seed(42)
-dat &lt;- mtcars[1:8,]
-ggplot(dat) +
-  geom_point(aes(wt, mpg), color = &#39;red&#39;) +
-  geom_text_repel(aes(wt, mpg, label = rownames(dat))) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
-<pre class="r"><code>#geom_label_repel is based on geom_label.
-set.seed(42)
-ggplot(dat) +
-  geom_point(aes(wt, mpg)) +
-  geom_label_repel(
-    aes(wt, mpg, fill = factor(cyl), label = rownames(dat)),
-    fontface = &#39;bold&#39;, color = &#39;white&#39;,
-    box.padding = unit(0.25, &quot;lines&quot;)
-  ) +
-  theme_classic(base_size = 16)</code></pre>
-<p><img src="ggrepel_files/figure-html/unnamed-chunk-1-2.png" title="" alt="" width="576" /></p>
+# I start by creating an example data set. There are 2 markers, 
+# one that is moderately predictive and one that is not as predictive.
+
+set.seed(2529)
+D.ex &lt;- rbinom(200, size = 1, prob = .5)
+M1 &lt;- rnorm(200, mean = D.ex, sd = .65)
+M2 &lt;- rnorm(200, mean = D.ex, sd = 1.5)
+
+test &lt;- data.frame(D = D.ex, D.str = c(&quot;Healthy&quot;, &quot;Ill&quot;)[D.ex + 1], 
+                   M1 = M1, M2 = M2, stringsAsFactors = FALSE)
+
+# The Roc Geom
+# Next I use the ggplot function to define the aesthetics, and 
+# the geom_roc function to add an ROC curve layer. 
+
+basicplot &lt;- ggplot(test, aes(d = D, m = M1)) + geom_roc()
+basicplot</code></pre>
+<p><img src="plotROC_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="576" /></p>
 </div> <!-- col-sm-8 -->
 
   </div> <!-- row -->

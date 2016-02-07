@@ -1,0 +1,49 @@
+---
+title: "ggplot2 extensions: ggnet"
+---
+
+### ggnet
+<https://github.com/briatte/ggnet>
+
+The *ggnet2* function is a visualization function to plot network objects as **ggplot2** objects. It accepts any object that can be coerced to the **network** class, including adjacency or incidence matrices, edge lists, or one-mode **igraph** network objects.
+
+```{r, message=FALSE,warning=FALSE}
+# Example from http://briatte.github.io/ggnet/
+library(ggplot2)
+library(ggnet)
+
+# Let’s define a small random graph to illustrate each component of ggnetwork:
+library(network)
+library(sna)
+n = network(rgraph(10, tprob = 0.2), directed = FALSE)
+
+# Let’s now add categorical and continuous attributes for both edges and vertices
+n %v% "family" = sample(letters[1:3], 10, replace = TRUE)
+n %v% "importance" = sample(1:3, 10, replace = TRUE)
+
+# We now add a categorical edge attribute called "type", 
+# which is set to either "x", "y" or "z", and a continuous vertex 
+# attribute called "day", which is set to either 1, 2 or 3.
+e = network.edgecount(n)
+set.edge.attribute(n, "type", sample(letters[24:26], e, replace = TRUE))
+set.edge.attribute(n, "day", sample(1:3, e, replace = TRUE))
+
+# Let’s now draw the network edges using geom_edges
+# theme_blank
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  theme_blank()
+
+# Let’s now draw the nodes using geom_nodes
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  geom_nodes(aes(color = family, size = importance)) +
+  theme_blank()
+
+# Let’s now add node labels.
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(color = "black") +
+  geom_nodes(color = "black", size = 8) +
+  geom_nodetext(aes(color = family, label = LETTERS[ vertex.names ]), fontface = "bold") +
+  theme_blank()
+```
