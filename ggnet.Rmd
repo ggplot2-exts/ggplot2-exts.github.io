@@ -1,0 +1,27 @@
+---
+title: "ggplot2 extensions: ggnet"
+---
+
+### ggnet
+<https://github.com/briatte/ggnet>
+
+ggnet implements network visualizations in ggplot2 via the ggnet and ggnet2 functions. It can be installed [from CRAN](https://cran.r-project.org/web/packages/GGally/) as part of the GGally package, or [from GitHub](https://github.com/briatte/ggnet) as a standalone package.
+
+See the [geomnet](geomnet.html), [ggnetwork](ggnetwork.html) and [ggraph](ggraph.html) extensions for other extensions that bring network visualization to ggplot2.
+
+```{r message=FALSE,warning=FALSE}
+# Example from https://briatte.github.io/ggnet/
+library(ggplot2)
+library(ggnet)
+library(network)
+library(sna)
+
+# random graph
+net = rgraph(10, mode = "graph", tprob = 0.5)
+net = network(net, directed = FALSE)
+
+# vertex names
+network.vertex.names(net) = letters[1:10]
+
+ggnet2(net, size = 6, color = rep(c("tomato", "steelblue"), 5))
+```
