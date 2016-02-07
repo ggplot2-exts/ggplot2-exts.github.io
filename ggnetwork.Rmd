@@ -1,0 +1,34 @@
+---
+title: "ggplot2 extensions: ggnetwork"
+---
+
+### ggnetwork
+<https://github.com/briatte/ggnetwork>
+
+ggnetwork allows to visualize networks in ggplot2 by 'flattening' them to data frames, and then by manipulating their nodes, edges and related labels through distinct geometries that operate like the standard ggplot2 geometries for points, segments and text. It can be installed [from GitHub](https://github.com/briatte/ggnetwork) as a standalone package.
+
+See the [geomnet](geomnet.html), [ggnet](ggnet.html) and [ggraph](ggraph.html) extensions for other extensions that bring network visualization to ggplot2.
+
+```{r message=FALSE,warning=FALSE}
+# Example from https://briatte.github.io/ggnetwork/
+library(ggplot2)
+library(ggnetwork)
+library(network)
+library(sna)
+
+# random graph
+n = network(rgraph(10, tprob = 0.2), directed = FALSE)
+
+# vertex attributes
+n %v% "family" = sample(letters[1:3], 10, replace = TRUE)
+n %v% "importance" = sample(1:3, 10, replace = TRUE)
+
+# edge attributes
+e = network.edgecount(n)
+set.edge.attribute(n, "type", sample(letters[24:26], e, replace = TRUE))
+
+ggplot(data = ggnetwork(n), aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(linetype = type), color = "grey50") +
+  geom_nodes(aes(color = family, size = importance)) +
+  theme_blank()
+```
