@@ -7,6 +7,8 @@ title: "ggplot2 extensions: geomnet"
 
 geomnet implements network visualizations in ggplot2 via geom_net.
 
+See the [ggnet](ggnet.html), [ggnetwork](ggnetwork.html) and [ggraph](ggraph.html) extensions for other extensions that bring network visualization to ggplot2.
+
 ```{r message=FALSE,warning=FALSE}
 # Example from https://github.com/sctyner/geomnet
 library(ggplot2)

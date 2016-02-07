@@ -7,6 +7,8 @@ title: "ggplot2 extensions: ggraph"
 
 ggraph is an extension of ggplot2 tailored at plotting graph-like data structures (graphs, networks, trees, hierarchies...).
 
+See the [geomnet](geomnet.html), [ggnet](ggnet.html) and [ggnetwork](ggnetwork.html) extensions for other extensions that bring network visualization to ggplot2.
+
 ```{r, message=FALSE,warning=FALSE, eval=FALSE}
 # Example from https://github.com/thomasp85/ggraph
 library(ggplot2)
