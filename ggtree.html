@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>ggplot2 extensions: ggtree</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+
+
+<!-- Polyfill JS -->
+<script src="js/polyfill.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!--html_preserve-->
+
+<div class="header">
+  <nav class="navbar">
+      <h3 class="navbar-left"><strong>ggplot2</strong> extensions</h3>
+      <ul class="nav nav-pills navbar-right">
+        <li role="presentation" id="nav-home"><a href="index.html">Home</a></li>
+        <li role="presentation" id="nav-showcase"><a href="ggiraph.html">Extensions</a></li>
+        <li role="presentation" id="nav-github"><a href="https://github.com/ggplot2-exts/ggplot2-exts.github.io">GitHub</a></li>
+      </ul>
+  </nav>
+</div>
+
+<div class="showcase-header">
+
+  <div id = "showcase-intro">
+    ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="ggiraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggiraph</h5>
+          <p class="list-group-item-text">Make ggplot interactive</p>
+        </a>
+        <a href="ggstance.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggstance</h5>
+          <p class="list-group-item-text">Horizontal versions of ggplot2 geoms</p>
+        </a>
+        
+        <a href="ggalt.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggalt</h5>
+          <p class="list-group-item-text">Extra coordinate systems, geoms & stats</p>
+        </a>
+        
+        <a href="ggforce.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggforce</h5>
+          <p class="list-group-item-text">Accelarating ggplot2</p>
+        </a>
+        
+        <a href="ggrepel.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggrepel</h5>
+          <p class="list-group-item-text">Repel overlapping text labels</p>
+        </a>
+        
+        <a href="ggraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggraph</h5>
+          <p class="list-group-item-text">Plot graph-like data structures</p>
+        </a>
+        
+        <a href="ggpmisc.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggpmisc</h5>
+          <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
+        </a>
+        
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+        <a href="ggExtra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggExtra</h5>
+          <p class="list-group-item-text">Marginal density plots or histograms</p>
+        </a>
+        <a href="gganimate.html" class="list-group-item">
+          <h5 class="list-group-item-heading">gganimate</h5>
+          <p class="list-group-item-text">Create easy animations with ggplot2</p>
+        </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        <a href="ggtech.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtech</h5>
+          <p class="list-group-item-text">ggplot2 tech themes, scales, and geoms</p>
+        </a>
+        <a href="ggradar.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggradar</h5>
+          <p class="list-group-item-text">radar charts with ggplot2</p>
+        </a>
+        <a href="ggTimeSeries.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggTimeSeries</h5>
+          <p class="list-group-item-text">Time series visualisations</p>
+        </a>
+        <a href="ggtree.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtree</h5>
+          <p class="list-group-item-text">A phylogenetic tree viewer</p>
+        </a>
+        <a href="ggseas.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggseas</h5>
+          <p class="list-group-item-text">Seasonal adjustment on the fly</p>
+        </a>
+         
+        
+
+      </div> <!-- list-group -->
+
+    </div> <!-- col-sm-4 -->
+
+    <div id="ggtree" class="col-sm-8">
+<h3>ggtree</h3>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/ggtree.html" class="uri">https://bioconductor.org/packages/release/bioc/html/ggtree.html</a></p>
+<p>gtree is designed for visualizing phylogenetic tree and different types of associated annotation data.</p>
+<pre class="r"><code># Example from https://bioconductor.org/packages/release/bioc/html/ggtree.html
+library(ggplot2)
+library(ape)
+library(ggtree)</code></pre>
+<div id="tree-data-import" class="section level4">
+<h4>Tree Data Import</h4>
+<pre class="r"><code>file &lt;- system.file(&quot;extdata/BEAST&quot;, &quot;beast_mcc.tree&quot;, package=&quot;ggtree&quot;)
+beast &lt;- read.beast(file)</code></pre>
+<p>Users can use <code>ggtree(beast)</code> to visualize the tree and add layer to annotate it.</p>
+<pre class="r"><code>ggtree(beast, ndigits=2, branch.length = &#39;none&#39;) + geom_text(aes(x=branch, label=length_0.95_HPD), vjust=-.5, color=&#39;firebrick&#39;)</code></pre>
+<p><img src="ggtree_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="960" /></p>
+</div>
+<div id="tree-visualization" class="section level4">
+<h4>Tree Visualization</h4>
+<p>To view a phylogenetic tree, we first need to parse the tree file into <code>R</code>. The <code>ggtree</code> package supports many file format including output files of commonly used software packages in evolutionary biology. For more details, plase refer to the <a href="treeImport.html">Tree Data Import</a> vignette.</p>
+<pre class="r"><code>library(&quot;ggtree&quot;)
+nwk &lt;- system.file(&quot;extdata&quot;, &quot;sample.nwk&quot;, package=&quot;ggtree&quot;)
+tree &lt;- read.tree(nwk)
+ggplot(tree, aes(x, y)) + geom_tree() + theme_tree()</code></pre>
+<p><img src="ggtree_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="576" /></p>
+</div>
+<div id="tree-manipulation" class="section level4">
+<h4>Tree Manipulation</h4>
+<div id="internal-node-number" class="section level6">
+<h6>Internal node number</h6>
+<p>Some of the functions in <code>ggtree</code> works with clade and accepts a parameter of internal node number. To get the internal node number, user can use <code>geom_text2</code> to display it:</p>
+<pre class="r"><code>nwk &lt;- system.file(&quot;extdata&quot;, &quot;sample.nwk&quot;, package=&quot;ggtree&quot;)
+tree &lt;- read.tree(nwk)
+ggtree(tree) + geom_text2(aes(subset=!isTip, label=node), hjust=-.3) + geom_tiplab()</code></pre>
+<p><img src="ggtree_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="576" /></p>
+<p>The following example use <code>groupOTU</code> to display taxa classification.</p>
+<pre class="r"><code>data(chiroptera)
+groupInfo &lt;- split(chiroptera$tip.label, gsub(&quot;_\\w+&quot;, &quot;&quot;, chiroptera$tip.label))
+chiroptera &lt;- groupOTU(chiroptera, groupInfo)
+ggtree(chiroptera, aes(color=group), layout=&#39;circular&#39;) + geom_tiplab(size=1, aes(angle=angle))</code></pre>
+<p><img src="ggtree_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="1344" /></p>
+</div>
+</div>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
+</div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
+
+
+</div> <!-- page-body -->
+
+<footer>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div class="text-muted">
+  Design inspired by <a href="http://www.htmlwidgets.org/index.html" target="_blank">Ramnath Vaidyanathan, Kenton Russell, and RStudio, Inc</a>.
+  </div>
+  <div class="text-muted">
+  Maintained by <a href="http://www.danielemaasit.com" target="_blank">Daniel Emaasit</a>.
+  </div>
+  <div class="text-muted">
+  Copyright &copy; 2016 The R Community.
+  </div>
+</footer>
+
+<script>
+// manage active state of headres and navigation based on current page
+
+$(document).ready(function () {
+  
+  // compute name of page
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href == "")
+    href = "index.html";
+  
+  // main navigation and headers
+  if (href.startsWith("index")) {
+    $('#nav-home').addClass('active');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("showcase")) {
+    $('#nav-showcase').addClass('active');
+    $("#page-body").detach().appendTo('#showcase-body');
+    $('.showcase-header').removeClass('hidden');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("develop")) {
+    $('#nav-develop').addClass('active');
+  }
+     
+  // submenu navigation (used by showcase and develop)
+  $('.list-group a[href="' + href + '"]').addClass('active');      
+});
+
+</script>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>

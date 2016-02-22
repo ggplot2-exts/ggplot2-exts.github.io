@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>ggplot2 extensions: ggtech</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+
+
+<!-- Polyfill JS -->
+<script src="js/polyfill.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!--html_preserve-->
+
+<div class="header">
+  <nav class="navbar">
+      <h3 class="navbar-left"><strong>ggplot2</strong> extensions</h3>
+      <ul class="nav nav-pills navbar-right">
+        <li role="presentation" id="nav-home"><a href="index.html">Home</a></li>
+        <li role="presentation" id="nav-showcase"><a href="ggiraph.html">Extensions</a></li>
+        <li role="presentation" id="nav-github"><a href="https://github.com/ggplot2-exts/ggplot2-exts.github.io">GitHub</a></li>
+      </ul>
+  </nav>
+</div>
+
+<div class="showcase-header">
+
+  <div id = "showcase-intro">
+    ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="ggiraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggiraph</h5>
+          <p class="list-group-item-text">Make ggplot interactive</p>
+        </a>
+        <a href="ggstance.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggstance</h5>
+          <p class="list-group-item-text">Horizontal versions of ggplot2 geoms</p>
+        </a>
+        
+        <a href="ggalt.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggalt</h5>
+          <p class="list-group-item-text">Extra coordinate systems, geoms & stats</p>
+        </a>
+        
+        <a href="ggforce.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggforce</h5>
+          <p class="list-group-item-text">Accelarating ggplot2</p>
+        </a>
+        
+        <a href="ggrepel.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggrepel</h5>
+          <p class="list-group-item-text">Repel overlapping text labels</p>
+        </a>
+        
+        <a href="ggraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggraph</h5>
+          <p class="list-group-item-text">Plot graph-like data structures</p>
+        </a>
+        
+        <a href="ggpmisc.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggpmisc</h5>
+          <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
+        </a>
+        
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+        <a href="ggExtra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggExtra</h5>
+          <p class="list-group-item-text">Marginal density plots or histograms</p>
+        </a>
+        <a href="gganimate.html" class="list-group-item">
+          <h5 class="list-group-item-heading">gganimate</h5>
+          <p class="list-group-item-text">Create easy animations with ggplot2</p>
+        </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        <a href="ggtech.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtech</h5>
+          <p class="list-group-item-text">ggplot2 tech themes, scales, and geoms</p>
+        </a>
+        <a href="ggradar.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggradar</h5>
+          <p class="list-group-item-text">radar charts with ggplot2</p>
+        </a>
+        <a href="ggTimeSeries.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggTimeSeries</h5>
+          <p class="list-group-item-text">Time series visualisations</p>
+        </a>
+        <a href="ggtree.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtree</h5>
+          <p class="list-group-item-text">A phylogenetic tree viewer</p>
+        </a>
+        <a href="ggseas.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggseas</h5>
+          <p class="list-group-item-text">Seasonal adjustment on the fly</p>
+        </a>
+         
+        
+
+      </div> <!-- list-group -->
+
+    </div> <!-- col-sm-4 -->
+
+    <div id="ggtech" class="col-sm-8">
+<h3>ggtech</h3>
+<p><a href="https://github.com/ricardo-bion/ggtech" class="uri">https://github.com/ricardo-bion/ggtech</a></p>
+<p>ggplot2 tech themes, scales, and geoms.</p>
+<pre class="r"><code># Example from https://github.com/ricardo-bion/ggtech
+library(ggplot2)
+library(ggtech)
+
+# Make sure to install the required fonts 
+# (instructions at the end of this file).
+d &lt;- qplot(carat, data = diamonds[diamonds$color %in%LETTERS[4:7], ], geom = &quot;histogram&quot;, bins=30, fill = color)</code></pre>
+<p>Tech themes and scales:</p>
+<pre class="r"><code>d + theme_tech(theme=&quot;airbnb&quot;) + ggtitle(&quot;Airbnb ggplot2 theme&quot;) + scale_fill_tech(theme=&quot;airbnb&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>d + theme_tech(theme=&quot;etsy&quot;) + ggtitle(&quot;Etsy ggplot2 theme&quot;) + scale_fill_tech(theme=&quot;etsy&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>d + theme_tech(theme=&quot;facebook&quot;) + ggtitle(&quot;Facebook ggplot2 theme&quot;) + scale_fill_tech(theme=&quot;facebook&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>d + theme_tech(theme=&quot;google&quot;) + ggtitle(&quot;Google ggplot2 theme&quot;) + scale_fill_tech(theme=&quot;google&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>d + theme_tech(theme=&quot;twitter&quot;) + ggtitle(&quot;Twitter ggplot2 theme&quot;) + scale_fill_tech(theme=&quot;twitter&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="576" /></p>
+<p>Tech geoms, inspired by <a href="https://github.com/dill/emoGG">emoGG</a>.</p>
+<pre class="r"><code>d2 &lt;- data.frame(x = c(1:4, 3:1), y=1:7)</code></pre>
+<pre class="r"><code>ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.25, theme=&quot;airbnb&quot;) + 
+  theme_tech(&quot;airbnb&quot;) +
+  ggtitle(&quot;Airbnb geom&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme=&quot;etsy&quot;) + 
+  theme_tech(&quot;etsy&quot;)+
+  ggtitle(&quot;Etsy geom&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-9-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme=&quot;facebook&quot;) + 
+  theme_tech(&quot;facebook&quot;)+
+  ggtitle(&quot;Facebook geom&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-10-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.25, theme=&quot;google&quot;) + 
+  theme_tech(&quot;google&quot; ) +
+  ggtitle(&quot;Google geom&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="576" /></p>
+<pre class="r"><code>ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme=&quot;twitter&quot;) + 
+  theme_tech(&quot;twitter&quot;) +
+  ggtitle(&quot;Twitter geom&quot;)</code></pre>
+<p><img src="ggtech_files/figure-html/unnamed-chunk-12-1.png" title="" alt="" width="576" /></p>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
+</div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
+<div id="install-fonts" class="section level3">
+<h3>Install fonts:</h3>
+<p>You have to install the necessary fonts manually before using <code>ggtech</code>. Mofidy the <code>destfile</code> if you are using Windows or Unix.</p>
+<pre class="r"><code>## Facebook 
+download.file(&quot;http://social-fonts.com/assets/fonts/facebook-letter-faces/facebook-letter-faces.ttf&quot;, &quot;/Library/Fonts/facebook-letter-faces.ttf&quot;, method=&quot;curl&quot;)
+
+font_import(pattern = &#39;facebook-letter-faces.ttf&#39;, prompt=FALSE)
+font_import(pattern = &#39;Lucida&#39;, prompt=FALSE)
+
+
+## Google 
+download.file(&quot;http://social-fonts.com/assets/fonts/product-sans/product-sans.ttf&quot;, &quot;/Library/Fonts/product-sans.ttf&quot;, method=&quot;curl&quot;)
+
+font_import(pattern = &#39;product-sans.ttf&#39;, prompt=FALSE)
+font_import(pattern = &#39;Roboto&#39;, prompt=FALSE)
+
+
+## Airbnb 
+download.file(&quot;https://dl.dropboxusercontent.com/u/2364714/airbnb_ttf_fonts/Circular%20Air-Medium%203.46.45%20PM.ttf&quot;, &quot;/Library/Fonts/Circular Air-Medium 3.46.45 PM.ttf&quot;, method=&quot;curl&quot;)
+
+download.file(&quot;https://dl.dropboxusercontent.com/u/2364714/airbnb_ttf_fonts/Circular%20Air-Bold%203.46.45%20PM.ttf&quot;, &quot;/Library/Fonts/Circular Air-Bold 3.46.45 PM.ttf&quot;, method=&quot;curl&quot;)
+
+font_import(pattern = &#39;Circular&#39;, prompt=FALSE)
+
+
+## Etsy 
+download.file(&quot;https://www.etsy.com/assets/type/Guardian-EgypTT-Text-Regular.ttf&quot;, &quot;/Library/Fonts/Guardian-EgypTT-Text-Regular.ttf&quot;, method=&quot;curl&quot;)
+
+font_import(pattern = &#39;Guardian-EgypTT-Text-Regular.ttf&#39;, prompt=FALSE)
+
+
+## Twitter 
+download.file(&quot;http://social-fonts.com/assets/fonts/pico-black/pico-black.ttf&quot;, &quot;/Library/Fonts/pico-black.ttf&quot;, method=&quot;curl&quot;)
+
+download.file(&quot;http://social-fonts.com/assets/fonts/arista-light/arista-light.ttf&quot;, &quot;/Library/Fonts/arista-light.ttf&quot;, method=&quot;curl&quot;)
+
+font_import(pattern = &#39;pico-black.ttf&#39;, prompt=FALSE)
+font_import(pattern = &#39;arista-light.ttf&#39;, prompt=FALSE)</code></pre>
+</div>
+
+
+</div> <!-- page-body -->
+
+<footer>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div class="text-muted">
+  Design inspired by <a href="http://www.htmlwidgets.org/index.html" target="_blank">Ramnath Vaidyanathan, Kenton Russell, and RStudio, Inc</a>.
+  </div>
+  <div class="text-muted">
+  Maintained by <a href="http://www.danielemaasit.com" target="_blank">Daniel Emaasit</a>.
+  </div>
+  <div class="text-muted">
+  Copyright &copy; 2016 The R Community.
+  </div>
+</footer>
+
+<script>
+// manage active state of headres and navigation based on current page
+
+$(document).ready(function () {
+  
+  // compute name of page
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href == "")
+    href = "index.html";
+  
+  // main navigation and headers
+  if (href.startsWith("index")) {
+    $('#nav-home').addClass('active');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("showcase")) {
+    $('#nav-showcase').addClass('active');
+    $("#page-body").detach().appendTo('#showcase-body');
+    $('.showcase-header').removeClass('hidden');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("develop")) {
+    $('#nav-develop').addClass('active');
+  }
+     
+  // submenu navigation (used by showcase and develop)
+  $('.list-group a[href="' + href + '"]').addClass('active');      
+});
+
+</script>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>
