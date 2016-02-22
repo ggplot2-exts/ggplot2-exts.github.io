@@ -11,6 +11,7 @@ The *ggnet2* function is a visualization function to plot network objects as **g
 # Example from http://briatte.github.io/ggnet/
 library(ggplot2)
 library(ggnet)
+library(ggnetwork)
 
 # Let’s define a small random graph to illustrate each component of ggnetwork:
 library(network)

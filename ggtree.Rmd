@@ -1,0 +1,58 @@
+---
+title: "ggplot2 extensions: ggtree"
+---
+
+### ggtree
+<https://bioconductor.org/packages/release/bioc/html/ggtree.html>
+
+gtree is designed for visualizing phylogenetic tree and different types of associated annotation data.
+
+```{r, message=FALSE,warning=FALSE}
+# Example from https://bioconductor.org/packages/release/bioc/html/ggtree.html
+library(ggplot2)
+library(ape)
+library(ggtree)
+```
+
+#### Tree Data Import
+
+```{r}
+file <- system.file("extdata/BEAST", "beast_mcc.tree", package="ggtree")
+beast <- read.beast(file)
+```
+
+Users can use `ggtree(beast)` to visualize the tree and add layer to annotate it.
+
+```{r warning=FALSE, fig.width=10, fig.height=10}
+ggtree(beast, ndigits=2, branch.length = 'none') + geom_text(aes(x=branch, label=length_0.95_HPD), vjust=-.5, color='firebrick')
+```
+
+#### Tree Visualization
+To view a phylogenetic tree, we first need to parse the tree file into `R`. The `ggtree` package supports many file format including output files of commonly used software packages in evolutionary biology. For more details, plase refer to the [Tree Data Import](treeImport.html) vignette.
+
+```{r}
+library("ggtree")
+nwk <- system.file("extdata", "sample.nwk", package="ggtree")
+tree <- read.tree(nwk)
+ggplot(tree, aes(x, y)) + geom_tree() + theme_tree()
+```
+
+#### Tree Manipulation
+###### Internal node number
+
+Some of the functions in `ggtree` works with clade and accepts a parameter of internal node number. To get the internal node number, user can use `geom_text2` to display it:
+
+```{r}
+nwk <- system.file("extdata", "sample.nwk", package="ggtree")
+tree <- read.tree(nwk)
+ggtree(tree) + geom_text2(aes(subset=!isTip, label=node), hjust=-.3) + geom_tiplab()
+```
+
+The following example use `groupOTU` to display taxa classification.
+
+```{r fig.width=14, fig.height=14}
+data(chiroptera)
+groupInfo <- split(chiroptera$tip.label, gsub("_\\w+", "", chiroptera$tip.label))
+chiroptera <- groupOTU(chiroptera, groupInfo)
+ggtree(chiroptera, aes(color=group), layout='circular') + geom_tiplab(size=1, aes(angle=angle))
+```

@@ -1,0 +1,142 @@
+---
+title: "ggplot2 extensions: ggtech"
+---
+
+### ggtech
+<https://github.com/ricardo-bion/ggtech>
+
+ggplot2 tech themes, scales, and geoms.
+
+```{r, message=FALSE,warning=FALSE}
+# Example from https://github.com/ricardo-bion/ggtech
+library(ggplot2)
+library(ggtech)
+
+# Make sure to install the required fonts 
+# (instructions at the end of this file).
+d <- qplot(carat, data = diamonds[diamonds$color %in%LETTERS[4:7], ], geom = "histogram", bins=30, fill = color)
+
+```
+
+
+Tech themes and scales:
+
+```{r}
+d + theme_tech(theme="airbnb") + ggtitle("Airbnb ggplot2 theme") + scale_fill_tech(theme="airbnb")
+```
+
+
+
+```{r}
+d + theme_tech(theme="etsy") + ggtitle("Etsy ggplot2 theme") + scale_fill_tech(theme="etsy")
+```
+
+
+
+```{r}
+d + theme_tech(theme="facebook") + ggtitle("Facebook ggplot2 theme") + scale_fill_tech(theme="facebook")
+```
+
+
+```{r}
+d + theme_tech(theme="google") + ggtitle("Google ggplot2 theme") + scale_fill_tech(theme="google")
+```
+
+
+```{r}
+d + theme_tech(theme="twitter") + ggtitle("Twitter ggplot2 theme") + scale_fill_tech(theme="twitter")
+```
+
+
+
+Tech geoms, inspired by [emoGG](https://github.com/dill/emoGG).
+
+
+```{r}
+d2 <- data.frame(x = c(1:4, 3:1), y=1:7)
+```
+
+
+```{r}
+ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.25, theme="airbnb") + 
+  theme_tech("airbnb") +
+  ggtitle("Airbnb geom")
+```
+
+
+```{r}
+ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme="etsy") + 
+  theme_tech("etsy")+
+  ggtitle("Etsy geom")
+```
+
+```{r}
+ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme="facebook") + 
+  theme_tech("facebook")+
+  ggtitle("Facebook geom")
+```
+
+
+```{r}
+ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.25, theme="google") + 
+  theme_tech("google" ) +
+  ggtitle("Google geom")
+```
+
+
+```{r}
+ggplot(aes(x,y), data=d2) + 
+  geom_tech(size=0.15, theme="twitter") + 
+  theme_tech("twitter") +
+  ggtitle("Twitter geom")
+```
+
+
+
+### Install fonts:
+
+You have to install the necessary fonts manually before using `ggtech`. Mofidy the `destfile` if you are using Windows or Unix.
+
+
+```{r, eval=FALSE}
+
+## Facebook 
+download.file("http://social-fonts.com/assets/fonts/facebook-letter-faces/facebook-letter-faces.ttf", "/Library/Fonts/facebook-letter-faces.ttf", method="curl")
+
+font_import(pattern = 'facebook-letter-faces.ttf', prompt=FALSE)
+font_import(pattern = 'Lucida', prompt=FALSE)
+
+
+## Google 
+download.file("http://social-fonts.com/assets/fonts/product-sans/product-sans.ttf", "/Library/Fonts/product-sans.ttf", method="curl")
+
+font_import(pattern = 'product-sans.ttf', prompt=FALSE)
+font_import(pattern = 'Roboto', prompt=FALSE)
+
+
+## Airbnb 
+download.file("https://dl.dropboxusercontent.com/u/2364714/airbnb_ttf_fonts/Circular%20Air-Medium%203.46.45%20PM.ttf", "/Library/Fonts/Circular Air-Medium 3.46.45 PM.ttf", method="curl")
+
+download.file("https://dl.dropboxusercontent.com/u/2364714/airbnb_ttf_fonts/Circular%20Air-Bold%203.46.45%20PM.ttf", "/Library/Fonts/Circular Air-Bold 3.46.45 PM.ttf", method="curl")
+
+font_import(pattern = 'Circular', prompt=FALSE)
+
+
+## Etsy 
+download.file("https://www.etsy.com/assets/type/Guardian-EgypTT-Text-Regular.ttf", "/Library/Fonts/Guardian-EgypTT-Text-Regular.ttf", method="curl")
+
+font_import(pattern = 'Guardian-EgypTT-Text-Regular.ttf', prompt=FALSE)
+
+
+## Twitter 
+download.file("http://social-fonts.com/assets/fonts/pico-black/pico-black.ttf", "/Library/Fonts/pico-black.ttf", method="curl")
+
+download.file("http://social-fonts.com/assets/fonts/arista-light/arista-light.ttf", "/Library/Fonts/arista-light.ttf", method="curl")
+
+font_import(pattern = 'pico-black.ttf', prompt=FALSE)
+font_import(pattern = 'arista-light.ttf', prompt=FALSE)
+```

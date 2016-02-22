@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>ggplot2 extensions: ggradar</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+
+
+<!-- Polyfill JS -->
+<script src="js/polyfill.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!--html_preserve-->
+
+<div class="header">
+  <nav class="navbar">
+      <h3 class="navbar-left"><strong>ggplot2</strong> extensions</h3>
+      <ul class="nav nav-pills navbar-right">
+        <li role="presentation" id="nav-home"><a href="index.html">Home</a></li>
+        <li role="presentation" id="nav-showcase"><a href="ggiraph.html">Extensions</a></li>
+        <li role="presentation" id="nav-github"><a href="https://github.com/ggplot2-exts/ggplot2-exts.github.io">GitHub</a></li>
+      </ul>
+  </nav>
+</div>
+
+<div class="showcase-header">
+
+  <div id = "showcase-intro">
+    ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="ggiraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggiraph</h5>
+          <p class="list-group-item-text">Make ggplot interactive</p>
+        </a>
+        <a href="ggstance.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggstance</h5>
+          <p class="list-group-item-text">Horizontal versions of ggplot2 geoms</p>
+        </a>
+        
+        <a href="ggalt.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggalt</h5>
+          <p class="list-group-item-text">Extra coordinate systems, geoms & stats</p>
+        </a>
+        
+        <a href="ggforce.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggforce</h5>
+          <p class="list-group-item-text">Accelarating ggplot2</p>
+        </a>
+        
+        <a href="ggrepel.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggrepel</h5>
+          <p class="list-group-item-text">Repel overlapping text labels</p>
+        </a>
+        
+        <a href="ggraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggraph</h5>
+          <p class="list-group-item-text">Plot graph-like data structures</p>
+        </a>
+        
+        <a href="ggpmisc.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggpmisc</h5>
+          <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
+        </a>
+        
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+        <a href="ggExtra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggExtra</h5>
+          <p class="list-group-item-text">Marginal density plots or histograms</p>
+        </a>
+        <a href="gganimate.html" class="list-group-item">
+          <h5 class="list-group-item-heading">gganimate</h5>
+          <p class="list-group-item-text">Create easy animations with ggplot2</p>
+        </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        <a href="ggtech.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtech</h5>
+          <p class="list-group-item-text">ggplot2 tech themes, scales, and geoms</p>
+        </a>
+        <a href="ggradar.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggradar</h5>
+          <p class="list-group-item-text">radar charts with ggplot2</p>
+        </a>
+        <a href="ggTimeSeries.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggTimeSeries</h5>
+          <p class="list-group-item-text">Time series visualisations</p>
+        </a>
+        <a href="ggtree.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtree</h5>
+          <p class="list-group-item-text">A phylogenetic tree viewer</p>
+        </a>
+        <a href="ggseas.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggseas</h5>
+          <p class="list-group-item-text">Seasonal adjustment on the fly</p>
+        </a>
+         
+        
+
+      </div> <!-- list-group -->
+
+    </div> <!-- col-sm-4 -->
+
+    <div id="ggradar" class="col-sm-8">
+<h3>ggradar</h3>
+<p><a href="https://github.com/ricardo-bion/ggradar" class="uri">https://github.com/ricardo-bion/ggradar</a></p>
+<p>ggradar allows you to build radar charts with ggplot2. This package is based on <a href="http://rstudio-pubs-static.s3.amazonaws.com/5795_e6e6411731bb4f1b9cc7eb49499c2082.html">Paul Williamson’s</a> code, with new aesthetics and compatibility with ggplot2 2.0.</p>
+<p>It was inspired by <a href="http://www.buildingwidgets.com/blog/2015/12/9/week-49-d3radarr">d3radaR</a>, an htmlwidget built by <a href="https://github.com/timelyportfolio">timelyportfolio</a>.</p>
+<pre class="r"><code># Example from https://github.com/ricardo-bion/ggradar
+library(ggplot2)
+library(ggradar)
+suppressPackageStartupMessages(library(dplyr))
+library(scales)
+
+mtcars %&gt;%
+     add_rownames( var = &quot;group&quot; ) %&gt;%
+     mutate_each(funs(rescale), -group) %&gt;%
+     tail(4) %&gt;% select(1:10) -&gt; mtcars_radar
+
+ggradar(mtcars_radar) </code></pre>
+<p><img src="ggradar_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="1440" /></p>
+<pre class="r"><code>knitr::kable(mtcars_radar,format=&quot;markdown&quot;) </code></pre>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="11%" />
+<col width="5%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">group</th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ford Pantera L</td>
+<td align="right">0.2297872</td>
+<td align="right">1.0</td>
+<td align="right">0.6981791</td>
+<td align="right">0.7491166</td>
+<td align="right">0.6728111</td>
+<td align="right">0.4236768</td>
+<td align="right">0.0000000</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Ferrari Dino</td>
+<td align="right">0.3957447</td>
+<td align="right">0.5</td>
+<td align="right">0.1843352</td>
+<td align="right">0.4346290</td>
+<td align="right">0.3963134</td>
+<td align="right">0.3214012</td>
+<td align="right">0.1190476</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Maserati Bora</td>
+<td align="right">0.1957447</td>
+<td align="right">1.0</td>
+<td align="right">0.5734597</td>
+<td align="right">1.0000000</td>
+<td align="right">0.3594470</td>
+<td align="right">0.5259524</td>
+<td align="right">0.0119048</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Volvo 142E</td>
+<td align="right">0.4680851</td>
+<td align="right">0.0</td>
+<td align="right">0.1244699</td>
+<td align="right">0.2014134</td>
+<td align="right">0.6221198</td>
+<td align="right">0.3239581</td>
+<td align="right">0.4880952</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<h4>Custom fonts</h4>
+<p>This package requires the Airbnb font and the extrafont package.</p>
+<pre class="r"><code># configured to work on a Mac, change directory to Unix or Windows
+download.file(&quot;https://dl.dropboxusercontent.com/u/2364714/airbnb_ttf_fonts/Circular Air-Light 3.46.45 PM.ttf&quot;, &quot;/Library/Fonts/Circular Air-Light 3.46.45 PM.ttf&quot;, method=&quot;curl&quot;)
+
+extrafont::font_import(pattern = &#39;Circular&#39;, prompt=FALSE)</code></pre>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
+</div>
+
+
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
+
+
+
+
+
+</div> <!-- page-body -->
+
+<footer>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div class="text-muted">
+  Design inspired by <a href="http://www.htmlwidgets.org/index.html" target="_blank">Ramnath Vaidyanathan, Kenton Russell, and RStudio, Inc</a>.
+  </div>
+  <div class="text-muted">
+  Maintained by <a href="http://www.danielemaasit.com" target="_blank">Daniel Emaasit</a>.
+  </div>
+  <div class="text-muted">
+  Copyright &copy; 2016 The R Community.
+  </div>
+</footer>
+
+<script>
+// manage active state of headres and navigation based on current page
+
+$(document).ready(function () {
+  
+  // compute name of page
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href == "")
+    href = "index.html";
+  
+  // main navigation and headers
+  if (href.startsWith("index")) {
+    $('#nav-home').addClass('active');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("showcase")) {
+    $('#nav-showcase').addClass('active');
+    $("#page-body").detach().appendTo('#showcase-body');
+    $('.showcase-header').removeClass('hidden');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("develop")) {
+    $('#nav-develop').addClass('active');
+  }
+     
+  // submenu navigation (used by showcase and develop)
+  $('.list-group a[href="' + href + '"]').addClass('active');      
+});
+
+</script>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>ggplot2 extensions: ggTimeSeries</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<!-- Styles for this site -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/styles.css" rel="stylesheet">
+
+
+<!-- Polyfill JS -->
+<script src="js/polyfill.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+<!--html_preserve-->
+
+<div class="header">
+  <nav class="navbar">
+      <h3 class="navbar-left"><strong>ggplot2</strong> extensions</h3>
+      <ul class="nav nav-pills navbar-right">
+        <li role="presentation" id="nav-home"><a href="index.html">Home</a></li>
+        <li role="presentation" id="nav-showcase"><a href="ggiraph.html">Extensions</a></li>
+        <li role="presentation" id="nav-github"><a href="https://github.com/ggplot2-exts/ggplot2-exts.github.io">GitHub</a></li>
+      </ul>
+  </nav>
+</div>
+
+<div class="showcase-header">
+
+  <div id = "showcase-intro">
+    ggplot2 now has an official extension mechanism. This means that others can now easily create their own stats, geoms and positions, and provide them in other packages. This should allow the ggplot2 community to flourish, even as less development work happens in ggplot2 itself. This page showcases these extensions.
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a href="ggiraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggiraph</h5>
+          <p class="list-group-item-text">Make ggplot interactive</p>
+        </a>
+        <a href="ggstance.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggstance</h5>
+          <p class="list-group-item-text">Horizontal versions of ggplot2 geoms</p>
+        </a>
+        
+        <a href="ggalt.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggalt</h5>
+          <p class="list-group-item-text">Extra coordinate systems, geoms & stats</p>
+        </a>
+        
+        <a href="ggforce.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggforce</h5>
+          <p class="list-group-item-text">Accelarating ggplot2</p>
+        </a>
+        
+        <a href="ggrepel.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggrepel</h5>
+          <p class="list-group-item-text">Repel overlapping text labels</p>
+        </a>
+        
+        <a href="ggraph.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggraph</h5>
+          <p class="list-group-item-text">Plot graph-like data structures</p>
+        </a>
+        
+        <a href="ggpmisc.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggpmisc</h5>
+          <p class="list-group-item-text">Miscellaneous extensions to ggplot2</p>
+        </a>
+        
+        <a href="geomnet.html" class="list-group-item">
+          <h5 class="list-group-item-heading">geomnet</h5>
+          <p class="list-group-item-text">Network visualizations in ggplot2</p>
+        </a>
+        <a href="ggExtra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggExtra</h5>
+          <p class="list-group-item-text">Marginal density plots or histograms</p>
+        </a>
+        <a href="gganimate.html" class="list-group-item">
+          <h5 class="list-group-item-heading">gganimate</h5>
+          <p class="list-group-item-text">Create easy animations with ggplot2</p>
+        </a>
+        <a href="plotROC.html" class="list-group-item">
+          <h5 class="list-group-item-heading">plotROC</h5>
+          <p class="list-group-item-text">Interactive ROC plots</p>
+        </a>
+        <a href="ggthemes.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggthemes</h5>
+          <p class="list-group-item-text">ggplot themes and scales</p>
+        </a>
+        <a href="ggspectra.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggspectra</h5>
+          <p class="list-group-item-text">Extensions for radiation spectra</p>
+        </a>
+        <a href="ggnetwork.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggnetwork</h5>
+          <p class="list-group-item-text">Geoms to plot networks with ggplot2</p>
+        </a>
+        <a href="ggtech.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtech</h5>
+          <p class="list-group-item-text">ggplot2 tech themes, scales, and geoms</p>
+        </a>
+        <a href="ggradar.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggradar</h5>
+          <p class="list-group-item-text">radar charts with ggplot2</p>
+        </a>
+        <a href="ggTimeSeries.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggTimeSeries</h5>
+          <p class="list-group-item-text">Time series visualisations</p>
+        </a>
+        <a href="ggtree.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggtree</h5>
+          <p class="list-group-item-text">A phylogenetic tree viewer</p>
+        </a>
+        <a href="ggseas.html" class="list-group-item">
+          <h5 class="list-group-item-heading">ggseas</h5>
+          <p class="list-group-item-text">Seasonal adjustment on the fly</p>
+        </a>
+         
+        
+
+      </div> <!-- list-group -->
+
+    </div> <!-- col-sm-4 -->
+
+    <div id="ggtimeseries" class="col-sm-8">
+<h3>ggTimeSeries</h3>
+<p><a href="https://github.com/Ather-Energy/ggTimeSeries" class="uri">https://github.com/Ather-Energy/ggTimeSeries</a></p>
+<p>This R package offers novel time series visualisations. It is based on <code>ggplot2</code> and offers <code>geom</code>s and pre-packaged functions for easily creating any of the offered charts. Some examples are listed below.</p>
+<pre class="r"><code># Example from https://github.com/Ather-Energy/ggTimeSeries
+library(ggplot2)
+library(ggthemes)
+library(data.table)
+library(ggTimeSeries)</code></pre>
+<div id="line-charts-legacy" class="section level2">
+<h2>Line Charts Legacy</h2>
+<p>IoT devices generate a lot of sequential data over time, also called time series data. Legacy portrayals of such data would centre around line charts. Line charts have reportedly been around since the early 1700s (source: Wikipedia) and we have nothing against them. They facilitate trend detection and comparison, are simple to draw, and easy to understand; all in all a very well behaved visualisation. In modern times, their use is widespread from the heartbeat monitor at a hospital to the multiple-monitor display at a trader’s desk.</p>
+<pre><code>## [1] &quot;Excel 97 look recreated in R with the ggthemes package&quot;</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/excel97_line-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="alternatives" class="section level2">
+<h2>Alternatives</h2>
+<p>However there are cases when the data scientist becomes more demanding and specific. Five alternatives available to such a data scientist are listed below. All of these options are available as <code>geom</code>s or packaged functions in the <code>ggplot2</code> based <code>ggTimeSeries</code> package.</p>
+<p>Before that, setting a minimal theme -</p>
+<pre class="r"><code>minimalTheme = theme_set(theme_bw(12))
+minimalTheme = theme_update(
+   axis.ticks = element_blank(), 
+   legend.position = &#39;none&#39;,
+   strip.background = element_blank(), 
+   panel.border = element_blank(), 
+   panel.background = element_blank(), 
+   panel.grid = element_blank(), 
+   panel.border = element_blank()
+)</code></pre>
+<div id="calendar-heatmap" class="section level3">
+<h3>Calendar Heatmap</h3>
+<p>Available as <code>stat_calendar_heatmap</code> and <code>ggplot_calendar_heatmap</code>.</p>
+<p>A calendar heatmap is a great way to visualise daily data. Its structure makes it easy to detect weekly, monthly, or seasonal patterns.</p>
+<pre class="r"><code># creating some data
+set.seed(1)
+dtData = data.table(
+      DateCol = seq(
+         as.Date(&quot;1/01/2014&quot;, &quot;%d/%m/%Y&quot;),
+         as.Date(&quot;31/12/2015&quot;, &quot;%d/%m/%Y&quot;),
+         &quot;days&quot;
+      ),
+      ValueCol = runif(730)
+   )
+dtData[, ValueCol := ValueCol + (strftime(DateCol,&quot;%u&quot;) %in% c(6,7) * runif(1) * 0.75), .I]
+dtData[, ValueCol := ValueCol + (abs(as.numeric(strftime(DateCol,&quot;%m&quot;)) - 6.5)) * runif(1) * 0.75, .I]
+
+# base plot
+p1 = ggplot_calendar_heatmap(
+   dtData,
+   &#39;DateCol&#39;,
+   &#39;ValueCol&#39;
+)
+
+# adding some formatting
+p1 + 
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;) + 
+   scale_fill_continuous(low = &#39;green&#39;, high = &#39;red&#39;) + 
+   facet_wrap(~Year, ncol = 1)</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/calendar_heatmap-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># creating some categorical data
+dtData[, CategCol := letters[1 + round(ValueCol * 7)]]
+
+# base plot
+p2 = ggplot_calendar_heatmap(
+   dtData,
+   &#39;DateCol&#39;,
+   &#39;CategCol&#39;
+)
+
+# adding some formatting
+p2 + 
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;) + 
+   facet_wrap(~Year, ncol = 1)</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/calendar_heatmap-2.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="horizon-plots" class="section level3">
+<h3>Horizon Plots</h3>
+<p>Available as <code>stat_horizon</code> and <code>ggplot_horizon</code>.</p>
+<p>Imagine an area chart which has been chopped into multiple chunks of equal height. If you overlay these chunks one on top of the the other, and colour them to indicate which chunk it is, you get a horizon plot. Horizon plots are useful when visualising y values spanning a vast range but with a skewed distribution, and / or trying to highlight outliers without losing context of variation in the rest of the data.</p>
+<pre class="r"><code># creating some data
+set.seed(1)
+dfData = data.frame(x = 1:1000, y = cumsum(rnorm(1000)))
+
+# base plot
+p1 = ggplot_horizon(dfData, &#39;x&#39;, &#39;y&#39;)
+
+
+print(&quot;If you&#39;re seeing any vertical white stripes, it&#39;s a display thing.&quot;)</code></pre>
+<pre><code>## [1] &quot;If you&#39;re seeing any vertical white stripes, it&#39;s a display thing.&quot;</code></pre>
+<pre class="r"><code># adding some formatting
+p1 + 
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;) + 
+   scale_fill_continuous(low = &#39;green&#39;, high = &#39;red&#39;) + 
+   coord_fixed( 0.5 * diff(range(dfData$x)) / diff(range(dfData$y)))</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/horizon-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="steamgraphs" class="section level3">
+<h3>Steamgraphs</h3>
+<p>Available as <code>stat_steamgraph</code>.</p>
+<p>A steamgraph is a more aesthetically appealing version of a stacked area chart. It tries to highlight the changes in the data by placing the groups with the most variance on the edges, and the groups with the least variance towards the centre. This feature in conjunction with the centred alignment of each of the contributing areas makes it easier for the viewer to compare the contribution of any of the components across time.</p>
+<pre class="r"><code># creating some data
+set.seed(10)
+dfData = data.frame(
+   Time = 1:1000,
+   Signal = abs(
+      c(
+         cumsum(rnorm(1000, 0, 3)), 
+         cumsum(rnorm(1000, 0, 4)), 
+         cumsum(rnorm(1000, 0, 1)),
+         cumsum(rnorm(1000, 0, 2))
+      )
+   ),
+   VariableLabel = c(rep(&#39;Class A&#39;, 1000), rep(&#39;Class B&#39;, 1000), rep(&#39;Class C&#39;, 1000), rep(&#39;Class D&#39;, 1000))
+)
+
+# base plot
+p1 = ggplot(dfData, aes(x = Time, y = Signal, group = VariableLabel, fill = VariableLabel)) +
+  stat_steamgraph()
+
+
+# adding some formatting
+p1 + 
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;) + 
+   coord_fixed( 0.2 * diff(range(dfData$Time)) / diff(range(dfData$Signal)))</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/steamgraph-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="waterfall" class="section level3">
+<h3>Waterfall</h3>
+<p>Available as <code>stat_waterfall</code> and <code>ggplot_waterfall</code>.</p>
+<p>Rather than the values itself, a waterfall plot tries to bring out the changes in the values.</p>
+<pre class="r"><code># creating some data
+set.seed(1)
+dfData = data.frame(x = 1:100, y = cumsum(rnorm(100)))
+
+# base plot
+p1 = ggplot_waterfall(
+   dtData = dfData,
+   &#39;x&#39;,
+   &#39;y&#39;
+)
+
+# adding some formatting
+p1 + 
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;)</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/waterfall-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="occurrence-dot-plot" class="section level3">
+<h3>Occurrence Dot Plot</h3>
+<p>Available as <code>stat_occurrence</code>.</p>
+<p>This one is a favourite in infographics. For rare events, the reader would find it convenient to have the count of events encoded in the chart itself instead of having to map the value back to the Y axis.</p>
+<pre class="r"><code># creating some data
+set.seed(1)
+dfData = data.table(x = 1:100, y = floor(4 * abs(rnorm(100, 0 , 0.4))))
+
+# base plot
+p1 = ggplot(dfData, aes(x =x, y = y) )+
+   stat_occurrence()
+
+# adding some formatting   
+p1 +
+   xlab(&#39;&#39;) + 
+   ylab(&#39;&#39;) + 
+   coord_fixed(ylim = c(0,1 + max(dfData$y)))</code></pre>
+<p><img src="ggTimeSeries_files/figure-html/occurrence_dotplot-1.png" title="" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div> <!-- col-sm-8 -->
+
+  </div> <!-- row -->
+</div>
+
+</div> <!-- showcase-header -->
+
+
+
+<!--/html_preserve-->
+
+
+
+
+
+
+
+
+</div> <!-- page-body -->
+
+<footer>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div class="text-muted">
+  Design inspired by <a href="http://www.htmlwidgets.org/index.html" target="_blank">Ramnath Vaidyanathan, Kenton Russell, and RStudio, Inc</a>.
+  </div>
+  <div class="text-muted">
+  Maintained by <a href="http://www.danielemaasit.com" target="_blank">Daniel Emaasit</a>.
+  </div>
+  <div class="text-muted">
+  Copyright &copy; 2016 The R Community.
+  </div>
+</footer>
+
+<script>
+// manage active state of headres and navigation based on current page
+
+$(document).ready(function () {
+  
+  // compute name of page
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href == "")
+    href = "index.html";
+  
+  // main navigation and headers
+  if (href.startsWith("index")) {
+    $('#nav-home').addClass('active');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("showcase")) {
+    $('#nav-showcase').addClass('active');
+    $("#page-body").detach().appendTo('#showcase-body');
+    $('.showcase-header').removeClass('hidden');
+    $('.title').addClass('hidden');
+  } else if (href.startsWith("develop")) {
+    $('#nav-develop').addClass('active');
+  }
+     
+  // submenu navigation (used by showcase and develop)
+  $('.list-group a[href="' + href + '"]').addClass('active');      
+});
+
+</script>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>
