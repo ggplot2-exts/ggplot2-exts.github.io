@@ -3,23 +3,28 @@ title: "ggplot2 extensions: gganimate"
 ---
 
 ### gganimate
-<https://github.com/thomasp85/gganimate>
+<https://github.com/dgrtwo/gganimate>
 
- A Grammar of Animated Graphics.
- 
-```{r}
+gganimate wraps the animation package to create animated ggplot2 plots.
+
+```{r eval = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.show = "animate")
+# Example from https://github.com/dgrtwo/gganimate
+library(ggplot2)
 library(gganimate)
+
+# For example, suppose we wanted to create an animation similar to the Gapminder 
+# world animation, using Jenny Bryan's gapminder package for the data.
 library(gapminder)
 
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
-  geom_point(alpha = 0.7, show.legend = FALSE) +
-  scale_colour_manual(values = country_colors) +
-  scale_size(range = c(2, 12)) +
-  scale_x_log10() +
-  facet_wrap(~continent) +
-  # Here comes the gganimate specific bits
-  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
-  transition_time(year) +
-  ease_aes('linear')
+theme_set(theme_bw())
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, color = continent, frame = year)) +
+  geom_point() +
+  scale_x_log10()
+
+# Notice we added frame = year and saved the plot as p. 
+# We then display it as an animation with the gg_animate function:
+gg_animate(p)
 ```
 
+![unnamed-chunk-3](images/output.gif)

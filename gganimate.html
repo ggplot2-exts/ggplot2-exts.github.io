@@ -4,24 +4,20 @@
 
 <head>
 
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
 
-
 <title>ggplot2 extensions: gganimate</title>
 
-<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="libs/navigation-1.1/tabsets.js"></script>
-<link href="libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="libs/bootstrap-3.3.1/css/cosmo.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
 
 <!-- Styles for this site -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,49 +28,23 @@
 <script src="js/polyfill.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
 <script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
 }
 </script>
 
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 </head>
@@ -91,100 +61,12 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
+img { 
+  max-width:100%; 
+  height: auto; 
 }
 </style>
-
-
-
 <div class="container-fluid main-container">
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-
 
 <!--html_preserve-->
 
@@ -299,7 +181,30 @@ $(document).ready(function () {
 
     </div> <!-- col-sm-4 -->
 
-    <div class="col-sm-8" id="page-body"></div> <!-- col-sm-8 -->
+    
+<div id="gganimate" class="col-sm-8">
+<h3>gganimate</h3>
+<p><a href="https://github.com/dgrtwo/gganimate" class="uri">https://github.com/dgrtwo/gganimate</a></p>
+<p>gganimate wraps the animation package to create animated ggplot2 plots.</p>
+<pre class="r"><code>knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.show = &quot;animate&quot;)
+# Example from https://github.com/dgrtwo/gganimate
+library(ggplot2)
+library(gganimate)
+
+# For example, suppose we wanted to create an animation similar to the Gapminder 
+# world animation, using Jenny Bryan&#39;s gapminder package for the data.
+library(gapminder)
+
+theme_set(theme_bw())
+p &lt;- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, color = continent, frame = year)) +
+  geom_point() +
+  scale_x_log10()
+
+# Notice we added frame = year and saved the plot as p. 
+# We then display it as an animation with the gg_animate function:
+gg_animate(p)</code></pre>
+<p><img src="images/output.gif" alt="unnamed-chunk-3" /></p>
+</div> <!-- col-sm-8 -->
 
   </div> <!-- row -->
 </div>
@@ -310,35 +215,9 @@ $(document).ready(function () {
 
 <!--/html_preserve-->
 
-<div class="fluid-row" id="header">
 
 
 
-<h1 class="title toc-ignore">ggplot2 extensions: gganimate</h1>
-
-</div>
-
-
-<div id="gganimate" class="section level3">
-<h3>gganimate</h3>
-<p><a href="https://github.com/thomasp85/gganimate" class="uri">https://github.com/thomasp85/gganimate</a></p>
-<p>A Grammar of Animated Graphics.</p>
-<pre class="r"><code>library(gganimate)</code></pre>
-<pre><code>## Loading required package: ggplot2</code></pre>
-<pre class="r"><code>library(gapminder)
-
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
-  geom_point(alpha = 0.7, show.legend = FALSE) +
-  scale_colour_manual(values = country_colors) +
-  scale_size(range = c(2, 12)) +
-  scale_x_log10() +
-  facet_wrap(~continent) +
-  # Here comes the gganimate specific bits
-  labs(title = &#39;Year: {frame_time}&#39;, x = &#39;GDP per capita&#39;, y = &#39;life expectancy&#39;) +
-  transition_time(year) +
-  ease_aes(&#39;linear&#39;)</code></pre>
-<p><img src="gganimate_files/figure-html/unnamed-chunk-1-1.gif" /><!-- --></p>
-</div>
 
 
 </div> <!-- page-body -->
@@ -387,20 +266,14 @@ $(document).ready(function () {
 
 </script>
 
-
-
 </div>
 
 <script>
 
 // add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
 $(document).ready(function () {
-  bootstrapStylePandocTables();
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
-
 
 </script>
 
